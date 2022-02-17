@@ -1,3 +1,5 @@
+// TODO: remove this no-unused-vars rule later
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable object-curly-newline */
@@ -91,29 +93,30 @@ function Home() {
   };
 
   return (
-    <>
-      {isLoading && !error && <LoadingSpinner />}
-      {!isLoading && error && <ErrorModal name={error.name} message={error.message} />}
-      {products && (
-        <>
-          <FlexBox>
-            <FlexBox flexWrap="wrap" justifyContent="start" flexDirection="row" order={1} flexBasis="75%">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} onBuy={handleBuy} m="4rem 3rem" />
-              ))}
-            </FlexBox>
-            <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">
-              <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
-            </FlexBox>
-          </FlexBox>
-          <FlexBox justifyContent="center" mb="2rem">
-            <Button type="button" variant="primary" mx="1rem" px="2rem" onClick={handleLoadMoreData}>
-              LOAD MORE...
-            </Button>
-          </FlexBox>
-        </>
-      )}
-    </>
+    <div>hello</div>
+    //   <>
+    //     {isLoading && !error && <LoadingSpinner />}
+    //     {!isLoading && error && <ErrorModal name={error.name} message={error.message} />}
+    //     {products && (
+    //       <>
+    //         <FlexBox>
+    //           <FlexBox flexWrap="wrap" justifyContent="start" flexDirection="row" order={1} flexBasis="75%">
+    //             {products.map((product) => (
+    //               <ProductCard key={product.id} product={product} onBuy={handleBuy} m="4rem 3rem" />
+    //             ))}
+    //           </FlexBox>
+    //           <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">
+    //             <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
+    //           </FlexBox>
+    //         </FlexBox>
+    //         <FlexBox justifyContent="center" mb="2rem">
+    //           <Button type="button" variant="primary" mx="1rem" px="2rem" onClick={handleLoadMoreData}>
+    //             LOAD MORE...
+    //           </Button>
+    //         </FlexBox>
+    //       </>
+    //     )}
+    //   </>
   );
 }
 
