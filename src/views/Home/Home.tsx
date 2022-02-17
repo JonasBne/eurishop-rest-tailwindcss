@@ -100,7 +100,7 @@ function Home() {
         <>
           <div className="flex flex-wrap justify-center sm:justify-evenly">
             {products.map((product) => (
-              <ProductCard key={product.id} product={product} onBuy={handleBuy} m="4rem 3rem" />
+              <ProductCard key={product.id} product={product} onBuy={handleBuy} />
             ))}
           </div>
           {/* <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">

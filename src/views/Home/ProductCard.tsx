@@ -18,34 +18,30 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
   };
 
   return (
-    <div className="py-8 px-4">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img className="w-full" src={product.image} alt="Mountain" />
+    <div className="my-8 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm">
+      <div>
+        <img className="w-full object-cover" src={product.image} alt={product.title} />
         <div className="px-6 py-4">
-          <div className="font-bold text-lg mb-2">{product.title}</div>
-          <p className="text-gray-700 text-sm">{product.desc}</p>
-          <p className="text-gray-700 font-bold mt-4 text-sm">Unit price: €{product.price}</p>
+          <h5 className="font-bold text-lg mb-2 text-gray-800">{product.title}</h5>
+          <p className="text-gray-700 text-base">{product.desc}</p>
+          <p className="text-gray-700 text-sm mt-8 font-semibold">Price: €{product.price}</p>
         </div>
-        <div className="flex justify-center my-4">
-          {product.stocked ? (
-            <button
-              type="button"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={handleBuy}
-            >
-              +
-              <FaIcon icon={faShoppingCart} mx=".25rem" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              disabled
-            >
-              Out of stock
-            </button>
-          )}
-        </div>
+      </div>
+      <div className="flex justify-center my-4">
+        {product.stocked ? (
+          <button
+            type="button"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleBuy}
+          >
+            +
+            <FaIcon icon={faShoppingCart} mx=".25rem" />
+          </button>
+        ) : (
+          <button type="button" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" disabled>
+            Out of stock
+          </button>
+        )}
       </div>
     </div>
   );
