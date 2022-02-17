@@ -12,7 +12,7 @@ function Navbar() {
     <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
       <div className="flex justify-between items-center px-4 py-3 sm:p-0">
         <div>
-          <h2 className="text-left text-white font-semibold">Eurishop</h2>
+          <h2 className="text-left text-white font-semibold sm:text-2xl lg:text-3xl">Eurishop</h2>
         </div>
         <div className="sm:hidden">
           <button
@@ -38,10 +38,16 @@ function Navbar() {
         </div>
       </div>
       <div className={`px-2 pt-2 pb-4 ${isOpen ? 'block' : 'hidden'} sm:flex sm:p-0`}>
-        <Link to="home" className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3">
+        <Link
+          to="home"
+          className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3 sm:text-lg lg:text-xl"
+        >
           Home
         </Link>
-        <Link to="products/admin" className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3">
+        <Link
+          to="products/admin"
+          className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3 sm:text-lg lg:text-xl"
+        >
           Products
         </Link>
       </div>
