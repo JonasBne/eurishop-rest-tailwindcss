@@ -3,7 +3,6 @@
 import React from 'react';
 import { SpaceProps } from 'styled-system';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../components/Button';
 import FaIcon from '../../assets/FaIcon';
 import Product from '../../domain/product';
 
@@ -25,18 +24,28 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{product.title}</div>
           <p className="text-gray-700 text-base">{product.desc}</p>
-          <p className="text-gray-700 text-base font-semibold">Unit price: €{product.price}</p>
+          <p className="text-gray-700 font-semibold mt-4 text-sm">Unit price: €{product.price}</p>
         </div>
-        {product.stocked ? (
-          <Button type="button" variant="primary" my="1rem" mx="6rem" px="1rem" onClick={handleBuy}>
-            ADD
-            <FaIcon icon={faShoppingCart} mx=".25rem" />
-          </Button>
-        ) : (
-          <Button type="button" variant="danger" my="1rem" mx="6rem" disabled>
-            Out of stock
-          </Button>
-        )}
+        <div className="flex justify-center my-4">
+          {product.stocked ? (
+            <button
+              type="button"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={handleBuy}
+            >
+              +
+              <FaIcon icon={faShoppingCart} mx=".25rem" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              disabled
+            >
+              Out of stock
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
