@@ -18,13 +18,13 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
   };
 
   return (
-    <div className="p-10">
+    <div className="py-8 px-4">
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img className="w-full object-cover" src={product.image} alt="Mountain" />
+        <img className="w-full" src={product.image} alt="Mountain" />
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{product.title}</div>
-          <p className="text-gray-700 text-base">{product.desc}</p>
-          <p className="text-gray-700 font-semibold mt-4 text-sm">Unit price: €{product.price}</p>
+          <div className="font-bold text-lg mb-2">{product.title}</div>
+          <p className="text-gray-700 text-sm">{product.desc}</p>
+          <p className="text-gray-700 font-bold mt-4 text-sm">Unit price: €{product.price}</p>
         </div>
         <div className="flex justify-center my-4">
           {product.stocked ? (

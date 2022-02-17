@@ -38,15 +38,12 @@ function Navbar() {
         </div>
       </div>
       <div className={`px-2 pt-2 pb-4 ${isOpen ? 'block' : 'hidden'} sm:flex sm:p-0`}>
-        <Link
-          to="home"
-          className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3 sm:text-lg lg:text-xl"
-        >
+        <Link to="home" className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3 sm:text-lg">
           Home
         </Link>
         <Link
           to="products/admin"
-          className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3 sm:text-lg lg:text-xl"
+          className="block px-2 py-1 text-white text-sm hover:bg-gray-800 rounded sm:ml-3 sm:text-lg"
         >
           Products
         </Link>

@@ -98,7 +98,7 @@ function Home() {
       {!isLoading && error && <ErrorModal name={error.name} message={error.message} />}
       {products && (
         <>
-          <div className="flex flex-wrap justify-center sm:justify-around">
+          <div className="flex flex-wrap justify-center sm:justify-evenly">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} onBuy={handleBuy} m="4rem 3rem" />
             ))}
