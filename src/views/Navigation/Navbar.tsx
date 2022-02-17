@@ -2,12 +2,12 @@ import React from 'react';
 
 function Navbar() {
   return (
-    <header className="bg-gray-900">
+    <header className="flex justify-between items-center px-4 py-3 bg-gray-900">
       <div>
-        <h2 className="text-center text-white">Eurishop</h2>
+        <h2 className="text-left text-white font-semibold">Eurishop</h2>
       </div>
       <div>
-        <button type="button" className="text-gray-400">
+        <button type="button" className="block text-gray-400 focus:text-white outline-none hover:text-white">
           <svg viewBox="0 0 24 24" className="fill-current h-6 w-6">
             <path
               fillRule="evenodd"
