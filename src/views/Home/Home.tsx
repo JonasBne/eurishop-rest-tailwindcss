@@ -101,9 +101,9 @@ function Home() {
               <ProductCard key={product.id} product={product} onBuy={handleBuy} />
             ))}
           </div>
-          {/* <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">
+          <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">
             <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
-          </FlexBox> */}
+          </FlexBox>
           <div className="flex justify-center my-6">
             <button
               type="button"
