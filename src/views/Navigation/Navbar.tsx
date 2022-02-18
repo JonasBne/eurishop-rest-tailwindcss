@@ -4,17 +4,20 @@ import { useAtom } from 'jotai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSlash, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 // eslint-disable-next-line import/no-cycle
-import { cartItemsAtom } from '../../App';
+import { cartIsOpenAtom, cartItemsAtom } from '../../App';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItemsTotal] = useAtom(cartItemsAtom);
+  const [, setCartIsOpen] = useAtom(cartIsOpenAtom);
 
   const handleClick = () => {
     setIsOpen((preOpen) => !preOpen);
   };
 
-  // TODO: determine number of items dynamically
+  const handleCartClick = () => {
+    setCartIsOpen((preOpen) => !preOpen);
+  };
 
   return (
     <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
@@ -27,6 +30,7 @@ function Navbar() {
             <FontAwesomeIcon
               icon={faShoppingBag}
               className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
+              onClick={handleCartClick}
             />
             <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
               {cartItemsTotal}
@@ -60,6 +64,7 @@ function Navbar() {
         <FontAwesomeIcon
           icon={faShoppingBag}
           className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
+          onClick={handleCartClick}
         />
         <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
           {cartItemsTotal}
