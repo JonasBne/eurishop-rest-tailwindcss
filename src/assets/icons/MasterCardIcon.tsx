@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MasterCard() {
+function MasterCardIcon() {
   return (
     <div className="flex justify-center items-center flex-col">
       <img
@@ -8,10 +8,9 @@ function MasterCard() {
         alt="Mastercard icon"
         width="40"
         className="relative right-5"
-      />{' '}
-      <span className="text-xs font-medium text-gray-200 bottom-2 relative right-5">Mastercard</span>
+      />
     </div>
   );
 }
 
-export default MasterCard;
+export default MasterCardIcon;

@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import MasterCard from '../../assets/MasterCard';
-import VisaCard from '../../assets/Visa';
+import MasterCardIcon from '../../assets/icons/MasterCardIcon';
+import VisaCardIcon from '../../assets/icons/VisaCardIcon';
 
 function PaymentDetails() {
   return (
@@ -10,8 +9,8 @@ function PaymentDetails() {
       <h2 className="text-xl font-medium text-gray-100 block pb-3">Payment Details</h2>
       <span className="text-xs text-gray-300 ">Select your card</span>
       <div className="overflow-visible flex justify-around items-center mt-2">
-        <MasterCard />
-        <VisaCard />
+        <MasterCardIcon />
+        <VisaCardIcon />
       </div>
       <div className="flex justify-center flex-col pt-3">
         {' '}
