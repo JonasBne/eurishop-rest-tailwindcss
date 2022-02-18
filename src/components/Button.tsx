@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/require-default-props */
 import React, { ReactNode } from 'react';
+import noop from '../utils/noop';
 
 type ButtonType = 'button' | 'submit';
 type Variant = 'primary' | 'secondary' | 'danger';
@@ -9,10 +10,11 @@ interface ButtonProps {
   variant?: Variant;
   children: ReactNode;
   onClick?: any;
-  type: ButtonType;
+  type?: ButtonType;
 }
 
-function Button({ variant, children, type, onClick = noop }: ButtonProps) {
+// TODO: find a way to pass margin and padding
+function Button({ variant, children, type = 'button', onClick = noop }: ButtonProps) {
   if (variant === 'secondary') {
     return (
       <button type={type} className="text-md font-medium text-blue-600 hover:text-blue-800" onClick={onClick}>
