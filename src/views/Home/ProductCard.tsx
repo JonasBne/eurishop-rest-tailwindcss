@@ -27,11 +27,13 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
       </div>
       <div className="flex justify-center my-4">
         {product.stocked ? (
-          <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <div className="bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded">
             <FontAwesomeIcon icon={faCartPlus} onClick={handleBuy} />
           </div>
         ) : (
-          <div className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Sold out</div>
+          <button type="button" disabled className="bg-red-500 text-white font-bold py-2 px-4 rounded">
+            Sold out
+          </button>
         )}
       </div>
     </div>
