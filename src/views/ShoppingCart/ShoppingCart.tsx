@@ -66,7 +66,9 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
             <span>Your cart looks empty...</span>
             <div className="flex items-center mt-6">
               <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
-              <Button>Start Shopping</Button>
+              <Button variant="secondary" className="py-2 px-4">
+                Start Shopping
+              </Button>
             </div>
           </div>
         ))}

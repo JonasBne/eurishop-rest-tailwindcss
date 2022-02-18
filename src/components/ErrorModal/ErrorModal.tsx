@@ -31,7 +31,9 @@ function ErrorModal({ name, message }: ErrorModalProps) {
               The following problem occured:
               {message}
             </Span>
-            <Button onClick={() => navigate('/home')}>Return home</Button>
+            <Button variant="danger" className="py-2 px-4" onClick={() => navigate('/home')}>
+              Return home
+            </Button>
           </FlexBox>
         </Overlay>,
         document.body,

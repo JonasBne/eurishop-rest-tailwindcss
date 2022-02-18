@@ -27,11 +27,13 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
       </div>
       <div className="flex justify-center my-4">
         {product.stocked ? (
-          <Button onClick={handleBuy}>
+          <Button variant="primary" className="py-2 px-4" onClick={handleBuy}>
             <FontAwesomeIcon icon={faCartPlus} />
           </Button>
         ) : (
-          <Button variant="danger">Sold out</Button>
+          <Button variant="danger" className="py-2 px-4">
+            Sold out
+          </Button>
         )}
       </div>
     </div>

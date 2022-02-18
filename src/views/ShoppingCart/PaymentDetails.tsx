@@ -1,6 +1,7 @@
 import React from 'react';
 import MasterCardLogo from '../../assets/logos/MasterCardLogo';
 import VisaCardLogo from '../../assets/logos/VisaCardLogo';
+import Button from '../../components/Button';
 
 function PaymentDetails() {
   return (
@@ -61,9 +62,9 @@ function PaymentDetails() {
           </div>
         </div>
       </div>
-      <button type="button" className="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">
+      <Button variant="primary" className="h-12 w-full">
         Check Out
-      </button>
+      </Button>
     </div>
   );
 }

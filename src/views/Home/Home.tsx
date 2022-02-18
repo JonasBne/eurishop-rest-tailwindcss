@@ -104,7 +104,9 @@ function Home() {
             <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
           </FlexBox>
           <div className="flex justify-center my-6">
-            <Button onClick={handleLoadMoreData}>Load more...</Button>
+            <Button variant="primary" className="py-2 px-4" onClick={handleLoadMoreData}>
+              Load more...
+            </Button>
           </div>
         </>
       )}
