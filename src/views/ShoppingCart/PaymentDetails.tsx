@@ -1,6 +1,6 @@
 import React from 'react';
-import MasterCardIcon from '../../assets/icons/MasterCardIcon';
-import VisaCardIcon from '../../assets/icons/VisaCardIcon';
+import MasterCardLogo from '../../assets/logos/MasterCardLogo';
+import VisaCardLogo from '../../assets/logos/VisaCardLogo';
 
 function PaymentDetails() {
   return (
@@ -8,8 +8,8 @@ function PaymentDetails() {
       <h2 className="text-xl font-medium text-gray-100 block pb-3">Payment Details</h2>
       <span className="text-xs text-gray-300 ">Select your card</span>
       <div className="overflow-visible flex justify-around items-center mt-2">
-        <MasterCardIcon />
-        <VisaCardIcon />
+        <MasterCardLogo />
+        <VisaCardLogo />
       </div>
       <div className="flex justify-center flex-col pt-3">
         <label htmlFor="card-holder" className="text-xs text-gray-400 ">
