@@ -11,10 +11,11 @@ interface ButtonProps {
   children: ReactNode;
   onClick?: any;
   type?: ButtonType;
+  className?: string;
 }
 
 // TODO: find a way to pass margin and padding
-function Button({ variant, children, type = 'button', onClick = noop }: ButtonProps) {
+function Button({ variant, className, children, type = 'button', onClick = noop }: ButtonProps) {
   if (variant === 'secondary') {
     return (
       <button type={type} className="text-md font-medium text-blue-500 hover:text-blue-700" onClick={onClick}>
