@@ -104,8 +104,8 @@ function Home() {
             ))}
           </div>
           {/* <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">
-                <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
-              </FlexBox> */}
+            <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
+          </FlexBox> */}
           <FlexBox justifyContent="center" mb="2rem">
             <Button type="button" variant="primary" mx="1rem" px="2rem" onClick={handleLoadMoreData}>
               LOAD MORE...
