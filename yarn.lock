@@ -1128,11 +1128,6 @@
   dependencies:
     prop-types "^15.7.2"
 
-"@heroicons/react@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-1.0.5.tgz#2fe4df9d33eb6ce6d5178a0f862e97b61c01e27d"
-  integrity sha512-UDMyLM2KavIu2vlWfMspapw9yii7aoLwzI2Hudx4fyoPwfKfxU8r3cL8dEBXOjcLG0/oOONZzbT14M1HoNtEcg==
-
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.9.2.tgz#68be55c737023009dfc5fe245d51181bb6476914"
@@ -2086,6 +2081,11 @@
   integrity sha512-1uls4wipZn8FtYFZ7upRVFDoEeOXTQTs2zuyOZPn02T6rjIxtvj2P2lG5qsxXHhKuKsu3thveCZrtaeLE/ibLg==
   dependencies:
     csstype "^3.0.2"
+
+"@types/tailwindcss@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@types/tailwindcss/-/tailwindcss-3.0.8.tgz#8d9db6cea6f7e7bca690594f7079f17d0f4db8d1"
+  integrity sha512-3BKgtrXdr+E/lsz79Hbkb8X3kjlbsgw1m0x/ewhff+cqN059GpFWHtYuLJd2ToDTeWZa3OE2V4KIo//PnOrKlQ==
 
 "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.2"
