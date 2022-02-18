@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
+import { atom } from 'jotai';
 import Navbar from './views/Navigation/Navbar';
 import Home from './views/Home/Home';
 import ProductEdit from './views/ProductDetail/ProductEdit';
@@ -9,6 +10,9 @@ import ProductList from './views/ProductList/ProductList';
 import ProductAdd from './views/ProductDetail/ProductAdd';
 
 const queryClient = new QueryClient();
+
+export const cartItemsAtom = atom(0);
+export const cartVisibilityAtom = atom(false);
 
 function App() {
   return (

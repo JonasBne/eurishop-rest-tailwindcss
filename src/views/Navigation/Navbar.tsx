@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAtom } from 'jotai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSlash, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+// eslint-disable-next-line import/no-cycle
+import { cartItemsAtom } from '../../App';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartItemsTotal] = useAtom(cartItemsAtom);
 
   const handleClick = () => {
     setIsOpen((preOpen) => !preOpen);
@@ -25,7 +29,7 @@ function Navbar() {
               className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
             />
             <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
-              *
+              {cartItemsTotal}
             </span>
           </div>
           <div className="sm:hidden">
@@ -58,7 +62,7 @@ function Navbar() {
           className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
         />
         <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
-          *
+          {cartItemsTotal}
         </span>
       </div>
     </header>
