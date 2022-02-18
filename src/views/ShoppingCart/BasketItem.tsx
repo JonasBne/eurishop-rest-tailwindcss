@@ -40,9 +40,17 @@ function BasketItem({ item, onUpdate }: BasketItemProps) {
 
       <div className="flex items-center">
         <div className="pr-8 flex items-center mx-10 ">
-          <FontAwesomeIcon icon={faMinus} className="w-2 h-2 block" onClick={() => handleUpdate('decrement')} />
+          <FontAwesomeIcon
+            icon={faMinus}
+            className="w-2 h-2 block hover:cursor-pointer"
+            onClick={() => handleUpdate('decrement')}
+          />
           <div className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2">{item.quantity}</div>
-          <FontAwesomeIcon icon={faPlus} className="w-2 h-2 block" onClick={() => handleUpdate('increment')} />
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="w-2 h-2 block hover:cursor-pointer"
+            onClick={() => handleUpdate('increment')}
+          />
         </div>
         <div className="pr-8 ">
           <span className="text-xs font-medium">{`Total: € ${calculateTotalCostPerCartItem(item)}`}</span>
