@@ -1,5 +1,5 @@
 import React from 'react';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BasketItem from './BasketItem';
 import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
@@ -34,8 +34,10 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                   </div>
                   <div className="flex justify-between items-center mt-6 pt-6 border-t">
                     <div className="flex items-center">
-                      <i className="fa fa-arrow-left text-sm pr-2" />
-                      <span className="text-md font-medium text-blue-500">Continue Shopping</span>
+                      <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
+                      <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
+                        Continue Shopping
+                      </button>
                     </div>
                     <div className="flex justify-center items-end">
                       <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
@@ -46,7 +48,18 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                   </div>
                 </>
               )}
-              {!cartItems || (cartItems.length === 0 && <div className="mt-6">Your cart looks empty...</div>)}
+              {!cartItems ||
+                (cartItems.length === 0 && (
+                  <div className="mt-6">
+                    <span>Your cart looks empty...</span>
+                    <div className="flex items-center mt-6">
+                      <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
+                      <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
+                        Start Shopping
+                      </button>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
