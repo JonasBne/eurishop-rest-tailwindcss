@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,7 +16,7 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-blue-50 shadow-lg rounded-lg md:max-w-5xl">
+    <div className="max-w-md mx-auto shadow-lg border-2 border-solid border-gray-300 bg-gray-50 rounded-lg md:max-w-5xl">
       <div className="md:flex ">
         <div className="w-full p-4 px-5 py-5">
           <div className="md:grid md:grid-cols-3 gap-2 ">
@@ -27,21 +25,28 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                 Shopping Cart
                 <FontAwesomeIcon icon={faShoppingCart} className="ml-5" />
               </h1>
-              <div className="flex flex-col mt-6 pt-6">
-                {cartItems.map((cartItem) => (
-                  <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
-                ))}
-              </div>
-              <div className="flex justify-between items-center mt-6 pt-6 border-t">
-                <div className="flex items-center">
-                  <i className="fa fa-arrow-left text-sm pr-2" />{' '}
-                  <span className="text-md font-medium text-blue-500">Continue Shopping</span>{' '}
-                </div>
-                <div className="flex justify-center items-end">
-                  <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>{' '}
-                  <span className="text-lg font-bold text-gray-800 "> $24.90</span>{' '}
-                </div>
-              </div>
+              {cartItems.length > 0 && (
+                <>
+                  <div className="flex flex-col mt-6 pt-6">
+                    {cartItems.map((cartItem) => (
+                      <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center mt-6 pt-6 border-t">
+                    <div className="flex items-center">
+                      <i className="fa fa-arrow-left text-sm pr-2" />
+                      <span className="text-md font-medium text-blue-500">Continue Shopping</span>
+                    </div>
+                    <div className="flex justify-center items-end">
+                      <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
+                      <span className="text-lg font-bold text-gray-800 ">{`€ ${calculateTotalCartCost(
+                        cartItems,
+                      )}`}</span>
+                    </div>
+                  </div>
+                </>
+              )}
+              {!cartItems || (cartItems.length === 0 && <div className="mt-6">Your cart looks empty...</div>)}
             </div>
           </div>
         </div>
