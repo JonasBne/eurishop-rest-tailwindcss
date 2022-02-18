@@ -60,13 +60,10 @@ function PaymentDetails() {
             </label>
           </div>
         </div>
-        <button
-          type="button"
-          className="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600"
-        >
-          Check Out
-        </button>
       </div>
+      <button type="button" className="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">
+        Check Out
+      </button>
     </div>
   );
 }
