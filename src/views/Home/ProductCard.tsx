@@ -16,9 +16,9 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
   };
 
   return (
-    <div className="my-4 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm">
-      <div className="scale-75">
-        <img className="w-full object-cover scale-80" src={product.image} alt={product.title} />
+    <div className="mt-6 mb-4 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm">
+      <div>
+        <img className="w-full object-cover" src={product.image} alt={product.title} />
         <div className="px-6 py-4">
           <h5 className="font-bold text-xl mb-2 text-blue-700">{product.title}</h5>
           <p className="text-gray-700 text-base">{product.desc}</p>
