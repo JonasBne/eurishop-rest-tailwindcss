@@ -1,9 +1,7 @@
-/* eslint-disable jsx-a11y/aria-role */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { SpaceProps } from 'styled-system';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import FaIcon from '../../assets/FaIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import Product from '../../domain/product';
 
 interface ProductCardProps extends SpaceProps {
@@ -18,29 +16,22 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
   };
 
   return (
-    <div className="my-8 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm">
-      <div>
-        <img className="w-full object-cover" src={product.image} alt={product.title} />
+    <div className="my-4 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm">
+      <div className="scale-75">
+        <img className="w-full object-cover scale-80" src={product.image} alt={product.title} />
         <div className="px-6 py-4">
           <h5 className="font-bold text-xl mb-2 text-blue-700">{product.title}</h5>
           <p className="text-gray-700 text-base">{product.desc}</p>
-          <p className="text-gray-700 text-sm mt-8 font-semibold">Price: €{product.price}</p>
+          <p className="text-gray-700 text-sm font-semibold">Price: €{product.price}</p>
         </div>
       </div>
       <div className="flex justify-center my-4">
         {product.stocked ? (
-          <button
-            type="button"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleBuy}
-          >
-            +
-            <FaIcon icon={faShoppingCart} mx=".25rem" />
-          </button>
+          <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <FontAwesomeIcon icon={faCartPlus} onClick={handleBuy} />
+          </div>
         ) : (
-          <button type="button" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" disabled>
-            Out of stock
-          </button>
+          <div className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Sold out</div>
         )}
       </div>
     </div>
