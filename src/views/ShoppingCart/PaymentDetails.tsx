@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import MasterCardIcon from '../../assets/icons/MasterCardIcon';
 import VisaCardIcon from '../../assets/icons/VisaCardIcon';
@@ -13,50 +12,54 @@ function PaymentDetails() {
         <VisaCardIcon />
       </div>
       <div className="flex justify-center flex-col pt-3">
-        {' '}
-        <label className="text-xs text-gray-400 ">Name on Card</label>{' '}
-        <input
-          type="text"
-          className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
-          placeholder="Giga Tamarashvili"
-        />{' '}
+        <label htmlFor="card-holder" className="text-xs text-gray-400 ">
+          Name on Card
+          <input
+            type="text"
+            id="card-holder"
+            name="card-holder"
+            className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+            placeholder="John Doe"
+          />
+        </label>
       </div>
       <div className="flex justify-center flex-col pt-3">
-        {' '}
-        <label className="text-xs text-gray-400 ">Card Number</label>{' '}
-        <input
-          type="text"
-          className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
-          placeholder="**** **** **** ****"
-        />{' '}
+        <label htmlFor="card-number" className="text-xs text-gray-400 ">
+          Card Number
+          <input
+            type="text"
+            id="card-number"
+            name="card-number"
+            className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+            placeholder="**** **** **** ****"
+          />
+        </label>
       </div>
       <div className="grid grid-cols-3 gap-2 pt-2 mb-3">
         <div className="col-span-2 ">
-          {' '}
-          <label className="text-xs text-gray-400">Expiration Date</label>
-          <div className="grid grid-cols-2 gap-2">
-            {' '}
+          <label htmlFor="exp-date" className="text-xs text-gray-400">
+            Expiration Date
             <input
               type="text"
+              id="exp-date"
+              name="exp-date"
               className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
-              placeholder="mm"
-            />{' '}
-            <input
-              type="text"
-              className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
-              placeholder="yyyy"
+              placeholder="05/22"
             />
+          </label>
+          <div>
+            <label htmlFor="cvv-code" className="text-xs text-gray-400">
+              CVV
+              <input
+                type="text"
+                id="cvv-code"
+                name="cvv-code"
+                className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+                placeholder="***"
+              />
+            </label>
           </div>
-          <div className="">
-            {' '}
-            <label className="text-xs text-gray-400">CVV</label>{' '}
-            <input
-              type="text"
-              className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
-              placeholder="XXX"
-            />{' '}
-          </div>
-        </div>{' '}
+        </div>
         <button
           type="button"
           className="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600"
