@@ -57,8 +57,8 @@ function Navbar() {
           icon={faShoppingBag}
           className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
         />
-        <span className="absolute right-12 top-2 rounded-full bg-red-600 w-4 h-4 text-white font-mono text-xs text-center">
-          5
+        <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
+          *
         </span>
       </div>
     </header>
