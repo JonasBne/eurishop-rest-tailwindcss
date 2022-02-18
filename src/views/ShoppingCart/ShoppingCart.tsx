@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BasketItem from './BasketItem';
 import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
 import PaymentDetails from './PaymentDetails';
+import Button from '../../components/Button';
 
 interface ShoppingCartProps {
   cartItems: CartItem[];
@@ -40,11 +41,9 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                       <div className="flex items-center">
                         <FontAwesomeIcon
                           icon={faArrowLeft}
-                          className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800"
+                          className="w-6 h-6 mr-2 text-blue-500 hover:text-blue-700"
                         />
-                        <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
-                          Continue Shopping
-                        </button>
+                        <Button variant="secondary">Continue Shopping</Button>
                       </div>
                       <div className="flex justify-center items-end">
                         <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
@@ -67,9 +66,7 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
             <span>Your cart looks empty...</span>
             <div className="flex items-center mt-6">
               <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
-              <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
-                Start Shopping
-              </button>
+              <Button>Start Shopping</Button>
             </div>
           </div>
         ))}

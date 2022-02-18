@@ -1,10 +1,10 @@
 import React from 'react';
-import { SpaceProps } from 'styled-system';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import Product from '../../domain/product';
+import Button from '../../components/Button';
 
-interface ProductCardProps extends SpaceProps {
+interface ProductCardProps {
   product: Product;
   onBuy: (productId: string | number) => void;
 }
@@ -27,13 +27,11 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
       </div>
       <div className="flex justify-center my-4">
         {product.stocked ? (
-          <div className="bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded">
-            <FontAwesomeIcon icon={faCartPlus} onClick={handleBuy} />
-          </div>
+          <Button onClick={handleBuy}>
+            <FontAwesomeIcon icon={faCartPlus} />
+          </Button>
         ) : (
-          <button type="button" disabled className="bg-red-500 text-white font-bold py-2 px-4 rounded">
-            Sold out
-          </button>
+          <Button variant="danger">Sold out</Button>
         )}
       </div>
     </div>

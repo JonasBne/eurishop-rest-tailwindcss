@@ -17,7 +17,7 @@ interface ButtonProps {
 function Button({ variant, children, type = 'button', onClick = noop }: ButtonProps) {
   if (variant === 'secondary') {
     return (
-      <button type={type} className="text-md font-medium text-blue-600 hover:text-blue-800" onClick={onClick}>
+      <button type={type} className="text-md font-medium text-blue-500 hover:text-blue-700" onClick={onClick}>
         {children}
       </button>
     );
@@ -32,7 +32,7 @@ function Button({ variant, children, type = 'button', onClick = noop }: ButtonPr
   return (
     <button
       type={type}
-      className="bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded"
+      className="bg-blue-600 hover:bg-blue-800 hover:cursor-pointer text-white font-bold py-2 px-4 rounded"
       onClick={onClick}
     >
       {children}

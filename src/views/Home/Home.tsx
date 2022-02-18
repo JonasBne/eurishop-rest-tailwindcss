@@ -1,4 +1,3 @@
-// TODO: remove this no-unused-vars rule later
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/aria-role */
 import React, { useState, useEffect } from 'react';
@@ -105,13 +104,7 @@ function Home() {
             <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
           </FlexBox>
           <div className="flex justify-center my-6">
-            <button
-              type="button"
-              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
-              onClick={handleLoadMoreData}
-            >
-              Load more...
-            </button>
+            <Button onClick={handleLoadMoreData}>Load more...</Button>
           </div>
         </>
       )}
