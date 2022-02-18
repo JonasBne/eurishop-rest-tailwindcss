@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BurgerIcon, CrossIcon, ShoppingCartIcon } from '../../assets/Icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faXRay } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,6 @@ function Navbar() {
     setIsOpen((preOpen) => !preOpen);
   };
 
-  // TODO: fix basket, load data from app itself (the query to pass down)
   return (
     <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
       <div className="flex justify-between items-center px-4 py-3 sm:p-0">
@@ -23,16 +23,10 @@ function Navbar() {
               className="block text-gray-400 focus:text-white outline-none hover:text-white"
               onClick={handleClick}
             >
-              {isOpen && <CrossIcon />}
-              {!isOpen && <BurgerIcon />}
+              {isOpen && <FontAwesomeIcon icon={faXRay} />}
+              {!isOpen && <FontAwesomeIcon icon={faBars} />}
             </button>
           </div>
-          <button type="button" className="relative flex text-gray-400">
-            <ShoppingCartIcon />
-            <span className="absolute right-0 top-0 rounded-full bg-blue-600 w-3 h-3 top right p-0 m-0 text-white font-mono text-xs leading-tight text-center">
-              5
-            </span>
-          </button>
         </div>
       </div>
 
