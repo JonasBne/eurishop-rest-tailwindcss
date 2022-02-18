@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import { faShoppingCart, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BasketItem from './BasketItem';
 import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
@@ -18,38 +18,18 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
   };
 
   return (
-    <div className="max-w-md mx-auto shadow-lg rounded-lg md:max-w-5xl">
+    <div className="max-w-md mx-auto bg-blue-50 shadow-lg rounded-lg md:max-w-5xl">
       <div className="md:flex ">
         <div className="w-full p-4 px-5 py-5">
           <div className="md:grid md:grid-cols-3 gap-2 ">
             <div className="col-span-2 p-5">
-              <h1 className="text-xl font-bold text-gray-800 ">Shopping Cart</h1>
+              <h1 className="text-xl font-bold text-blue-900 ">
+                Shopping Cart
+                <FontAwesomeIcon icon={faShoppingCart} className="ml-5" />
+              </h1>
               <div className="flex flex-col mt-6 pt-6">
                 {cartItems.map((cartItem) => (
-                  <div className="flex justify-between my-2">
-                    <div className="flex items-center">
-                      <img src={cartItem.product.image} width="60" className="rounded-full" />
-                      <div className="flex flex-col ml-3">
-                        <span className="md:text-md font-semibold font-mono text-gray-900">
-                          {cartItem.product.title}
-                        </span>
-                        <span className="text-xs font-light text-gray-600">#{cartItem.product.sku}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center">
-                      <div className="pr-8 flex items-center ">
-                        <FontAwesomeIcon icon={faMinus} className="w-2 h-2 block" />
-                        <div className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2">
-                          {cartItem.quantity}
-                        </div>
-                        <FontAwesomeIcon icon={faPlus} className="w-2 h-2 block" />
-                      </div>
-                      <div className="pr-8 ">
-                        <span className="text-xs font-medium">$10.50</span>
-                      </div>
-                    </div>
-                  </div>
+                  <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
                 ))}
               </div>
               <div className="flex justify-between items-center mt-6 pt-6 border-t">
