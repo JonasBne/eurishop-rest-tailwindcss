@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faSlash } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSlash, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +16,15 @@ function Navbar() {
         <div>
           <h2 className="text-left text-white font-semibold sm:text-2xl lg:text-3xl font-mono">Eurishop</h2>
         </div>
-        <div className="flex">
+        <div className="flex items-center">
+          <FontAwesomeIcon
+            icon={faShoppingBag}
+            className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
+          />
           <div className="sm:hidden">
             <button
               type="button"
-              className="block text-gray-400 focus:text-white outline-none hover:text-white"
+              className="block text-gray-400 focus:text-white outline-none hover:text-white mx-2"
               onClick={handleClick}
             >
               {isOpen && <FontAwesomeIcon icon={faSlash} />}
