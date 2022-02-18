@@ -1,32 +1,40 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable react/require-default-props */
-import React from 'react';
+import React, { ReactNode } from 'react';
 
+type ButtonType = 'button' | 'submit';
 type Variant = 'primary' | 'secondary' | 'danger';
 
 interface ButtonProps {
   variant?: Variant;
-  text: string;
+  children: ReactNode;
+  onClick?: any;
+  type: ButtonType;
 }
 
-function Button({ variant, text }: ButtonProps) {
+function Button({ variant, children, type, onClick = noop }: ButtonProps) {
   if (variant === 'secondary') {
     return (
-      <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
-        {text}
+      <button type={type} className="text-md font-medium text-blue-600 hover:text-blue-800" onClick={onClick}>
+        {children}
       </button>
     );
   }
   if (variant === 'danger') {
     return (
-      <button type="button" disabled className="bg-red-500 text-white font-bold py-2 px-4 rounded">
-        {text}
+      <button type={type} disabled className="bg-red-500 text-white font-bold py-2 px-4 rounded" onClick={onClick}>
+        {children}
       </button>
     );
   }
   return (
-    <div className="bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded">
-      {text}
-    </div>
+    <button
+      type={type}
+      className="bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded"
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }
 
