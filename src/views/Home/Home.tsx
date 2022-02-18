@@ -106,11 +106,15 @@ function Home() {
           {/* <FlexBox order={2} flexBasis="25%" mt="2rem" height="fit-content">
             <ShoppingCart cartItems={cartItems} onUpdate={handleUpdate} onClear={handleClear} />
           </FlexBox> */}
-          <FlexBox justifyContent="center" mb="2rem">
-            <Button type="button" variant="primary" mx="1rem" px="2rem" onClick={handleLoadMoreData}>
-              LOAD MORE...
-            </Button>
-          </FlexBox>
+          <div className="flex justify-center my-6">
+            <button
+              type="button"
+              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
+              onClick={handleLoadMoreData}
+            >
+              Load more...
+            </button>
+          </div>
         </>
       )}
     </>

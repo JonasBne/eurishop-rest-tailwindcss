@@ -22,7 +22,7 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
       <div>
         <img className="w-full object-cover" src={product.image} alt={product.title} />
         <div className="px-6 py-4">
-          <h5 className="font-bold text-lg mb-2 text-gray-800">{product.title}</h5>
+          <h5 className="font-bold text-xl mb-2 text-blue-700">{product.title}</h5>
           <p className="text-gray-700 text-base">{product.desc}</p>
           <p className="text-gray-700 text-sm mt-8 font-semibold">Price: €{product.price}</p>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXRay } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ function Navbar() {
               className="block text-gray-400 focus:text-white outline-none hover:text-white"
               onClick={handleClick}
             >
-              {isOpen && <FontAwesomeIcon icon={faXRay} />}
+              {isOpen && <FontAwesomeIcon icon={faSlash} />}
               {!isOpen && <FontAwesomeIcon icon={faBars} />}
             </button>
           </div>
