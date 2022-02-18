@@ -1,22 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
+import MasterCard from '../../assets/MasterCard';
+import VisaCard from '../../assets/Visa';
 
-function CartDetails() {
+function PaymentDetails() {
   return (
-    <div className=" p-5 bg-gray-800 rounded overflow-visible">
-      {' '}
-      <span className="text-xl font-medium text-gray-100 block pb-3">Card Details</span>{' '}
-      <span className="text-xs text-gray-400 ">Card Type</span>
-      <div className="overflow-visible flex justify-between items-center mt-2">
-        <div className="flex justify-center items-center flex-col">
-          <img
-            src="https://img.icons8.com/color/96/000000/mastercard-logo.png"
-            width="40"
-            className="relative right-5"
-          />{' '}
-          <span className="text-xs font-medium text-gray-200 bottom-2 relative right-5">Mastercard.</span>
-        </div>
+    <div className=" p-5 bg-gray-800 rounded overflow-hidden">
+      <h2 className="text-xl font-medium text-gray-100 block pb-3">Payment Details</h2>
+      <span className="text-xs text-gray-300 ">Select your card</span>
+      <div className="overflow-visible flex justify-around items-center mt-2">
+        <MasterCard />
+        <VisaCard />
       </div>
       <div className="flex justify-center flex-col pt-3">
         {' '}
@@ -74,4 +69,4 @@ function CartDetails() {
   );
 }
 
-export default CartDetails;
+export default PaymentDetails;

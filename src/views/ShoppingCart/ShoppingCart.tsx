@@ -3,6 +3,7 @@ import { faShoppingCart, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BasketItem from './BasketItem';
 import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
+import PaymentDetails from './PaymentDetails';
 
 interface ShoppingCartProps {
   cartItems: CartItem[];
@@ -18,55 +19,61 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
   // TODO: handle redirect to products page when a user clicks on 'continue shopping' or 'start shopping'
   // TODO: cart should not always be shown - fix with context
   return (
-    <div className="max-w-md mx-auto shadow-lg border-2 border-solid border-gray-300 bg-gray-50 rounded-lg md:max-w-5xl">
-      <div className="md:flex ">
-        <div className="w-full p-4 px-5 py-5">
-          <div className="md:grid md:grid-cols-3 gap-2 ">
-            <div className="col-span-2 p-5">
-              <h1 className="text-xl font-bold text-blue-900 ">
-                Shopping Cart
-                <FontAwesomeIcon icon={faShoppingCart} className="ml-5" />
-              </h1>
-              {cartItems.length > 0 && (
-                <>
-                  <div className="flex flex-col mt-6 pt-6">
-                    {cartItems.map((cartItem) => (
-                      <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
-                    ))}
-                  </div>
-                  <div className="flex justify-between items-center mt-6 pt-6 border-t">
-                    <div className="flex items-center">
-                      <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
-                      <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
-                        Continue Shopping
-                      </button>
+    <>
+      <div className="max-w-md mx-auto shadow-lg border-2 border-solid border-gray-300 bg-gray-50 rounded-lg md:max-w-5xl">
+        <div className="md:flex ">
+          <div className="w-full p-4 px-5 py-5">
+            <div className="md:grid md:grid-cols-3 gap-2 ">
+              <div className="col-span-2 p-5">
+                <h1 className="text-xl font-bold text-blue-900 ">
+                  Shopping Cart
+                  <FontAwesomeIcon icon={faShoppingCart} className="ml-5" />
+                </h1>
+                {cartItems.length > 0 && (
+                  <>
+                    <div className="flex flex-col mt-6 pt-6">
+                      {cartItems.map((cartItem) => (
+                        <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
+                      ))}
                     </div>
-                    <div className="flex justify-center items-end">
-                      <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
-                      <span className="text-lg font-bold text-gray-800 ">{`€ ${calculateTotalCartCost(
-                        cartItems,
-                      )}`}</span>
+                    <div className="flex justify-between items-center mt-6 pt-6 border-t">
+                      <div className="flex items-center">
+                        <FontAwesomeIcon
+                          icon={faArrowLeft}
+                          className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800"
+                        />
+                        <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
+                          Continue Shopping
+                        </button>
+                      </div>
+                      <div className="flex justify-center items-end">
+                        <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
+                        <span className="text-lg font-bold text-gray-800 ">{`€ ${calculateTotalCartCost(
+                          cartItems,
+                        )}`}</span>
+                      </div>
                     </div>
-                  </div>
-                </>
-              )}
-              {!cartItems ||
-                (cartItems.length === 0 && (
-                  <div className="mt-6">
-                    <span>Your cart looks empty...</span>
-                    <div className="flex items-center mt-6">
-                      <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
-                      <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
-                        Start Shopping
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  </>
+                )}
+              </div>
+              {cartItems.length > 0 && <PaymentDetails />}
             </div>
           </div>
         </div>
       </div>
-    </div>
+      {!cartItems ||
+        (cartItems.length === 0 && (
+          <div className="mt-6">
+            <span>Your cart looks empty...</span>
+            <div className="flex items-center mt-6">
+              <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-600 hover:text-blue-800" />
+              <button type="button" className="text-md font-medium text-blue-600 hover:text-blue-800">
+                Start Shopping
+              </button>
+            </div>
+          </div>
+        ))}
+    </>
   );
 
   return (
