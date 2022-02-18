@@ -10,17 +10,24 @@ function Navbar() {
     setIsOpen((preOpen) => !preOpen);
   };
 
+  // TODO: determine number of items dynamically
+
   return (
     <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
-      <div className="flex justify-between items-center px-4 py-3 sm:p-0">
+      <div className="flex justify-between items-center px-4 py-3 sm:p-0 sm:justify-around">
         <div>
           <h2 className="text-left text-white font-semibold sm:text-2xl lg:text-3xl font-mono">Eurishop</h2>
         </div>
         <div className="flex items-center">
-          <FontAwesomeIcon
-            icon={faShoppingBag}
-            className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
-          />
+          <div className="sm:hidden">
+            <FontAwesomeIcon
+              icon={faShoppingBag}
+              className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
+            />
+            <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
+              *
+            </span>
+          </div>
           <div className="sm:hidden">
             <button
               type="button"
@@ -44,6 +51,15 @@ function Navbar() {
         >
           Products
         </Link>
+      </div>
+      <div className=" hidden sm:block">
+        <FontAwesomeIcon
+          icon={faShoppingBag}
+          className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
+        />
+        <span className="absolute right-12 top-2 rounded-full bg-red-600 w-4 h-4 text-white font-mono text-xs text-center">
+          5
+        </span>
       </div>
     </header>
   );
