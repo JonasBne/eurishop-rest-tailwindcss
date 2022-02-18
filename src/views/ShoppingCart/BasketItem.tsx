@@ -24,18 +24,23 @@ function BasketItem({ item, onUpdate }: BasketItemProps) {
   };
 
   return (
-    <div role="cart-item" className="flex justify-between my-2">
+    <div role="cart-item" className="flex flex-col md:flex-row md:justify-between my-2">
       <div className="flex items-center">
-        <img src={item.product.image} alt={item.product.title} width="60" className="rounded-full" />
+        <img
+          src={item.product.image}
+          alt={item.product.title}
+          width="80"
+          className="rounded-full scale-75 sm:scale-100"
+        />
         <div className="flex flex-col ml-3">
-          <span className="md:text-md font-semibold font-mono text-gray-900">{item.product.title}</span>
+          <span className=" text-xs md:text-md font-semibold font-mono text-gray-900">{item.product.title}</span>
           <span className="text-xs font-light text-gray-600">#{item.product.sku}</span>
           <span className="text-xs font-light text-gray-800">Unit price: €{item.product.price}</span>
         </div>
       </div>
 
-      <div className="flex items-center">
-        <div className="pr-8 flex items-center mx-10 ">
+      <div className="flex items-center my-4 md:my-0">
+        <div className="md:pr-8 flex items-center mx-10">
           <FontAwesomeIcon
             icon={faMinus}
             className="w-3 h-3 block hover:cursor-pointer"
