@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import noop from '../utils/noop';
 
 type ButtonType = 'button' | 'submit';
-type Variant = 'primary' | 'secondary' | 'danger';
+type Variant = 'primary' | 'secondary' | 'danger' | 'warning';
 
 interface ButtonProps {
   variant: Variant;
@@ -24,6 +24,7 @@ function Button({ variant, className, children, type = 'button', onClick = noop 
         'bg-blue-600 hover:bg-blue-800 ': variant === 'primary',
         'text-blue-500 hover:text-blue-700': variant === 'secondary',
         'bg-red-500 hover:bg-red-700': variant === 'danger',
+        'text-red-400 hover:text-red-600': variant === 'warning',
       })}
       onClick={onClick}
     >

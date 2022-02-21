@@ -45,6 +45,9 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                         />
                         <Button variant="secondary">Continue Shopping</Button>
                       </div>
+                      <Button variant="warning" className="py-2 px-4">
+                        Clear Basket
+                      </Button>
                       <div className="flex justify-center items-end">
                         <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
                         <span className="text-lg font-bold text-gray-800 ">{`€ ${calculateTotalCartCost(

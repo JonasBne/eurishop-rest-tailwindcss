@@ -18,12 +18,23 @@ const queryClient = new QueryClient();
 export const cartIsOpenAtom = atom(false);
 export const cartItemsAtom = atom(0);
 
+/*
+TODO
+
+fetchNumberOfCartItems is executed only on the initial render of App. When new items are added to the basket, there is no
+invalidation of the basket query (however, these on success options are specified in basket.api). The documentation states that
+on succes is not available on fetchQuery... 
+
+How to solve?
+
+*/
+
 function App() {
-  const [, setCartItemsAtom] = useAtom(cartItemsAtom);
+  const [, setCartItemsTotal] = useAtom(cartItemsAtom);
 
   const fetchNumberOfCartItems = async () => {
     const data = await queryClient.fetchQuery(['basket'], () => api.get(getBaseUrl()));
-    setCartItemsAtom(data.length);
+    setCartItemsTotal(data.length);
   };
 
   fetchNumberOfCartItems();
