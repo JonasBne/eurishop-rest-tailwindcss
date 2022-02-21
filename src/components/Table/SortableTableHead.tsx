@@ -55,7 +55,7 @@ function SortableTableHead({
               // eslint-disable-next-line no-nested-ternary
               sortExpression.includes('+') ? faSortDown : sortExpression.includes('-') ? faSortUp : faSort
             }
-            className="bg-red-400 w-4 h-4 px-1"
+            className="w-4 h-4 ml-2"
           />
         )}
       </div>
