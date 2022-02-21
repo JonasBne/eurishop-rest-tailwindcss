@@ -111,7 +111,7 @@ function ProductList() {
       {error && <ErrorModal name={error.name} message={error.message} />}
       {products && (
         <>
-          <Button variant="primary" onClick={handleAddProductClick}>
+          <Button variant="primary" className="m-4 p-2" onClick={handleAddProductClick}>
             Add product +
           </Button>
           <Table

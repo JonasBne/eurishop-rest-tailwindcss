@@ -50,7 +50,7 @@ function Table({
       <table className="table-fixed break-words grid grid-cols-2 my-8 mx-4 border-collapse shadow-2xl lg:hidden">
         {data.map((item, index) => (
           <>
-            <thead key={`tablehead${item.id}${index}`} className="bg-blue-600 w-fit my-4">
+            <thead key={`tablehead${item.id}${index}`} className="bg-teal-600 w-fit my-4">
               <tr className="flex flex-col my-2">
                 {columns.map((col, colIndex) => (
                   <SortableTableHead
