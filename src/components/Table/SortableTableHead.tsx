@@ -1,8 +1,6 @@
 import React from 'react';
 import { faSortDown, faSortUp, faSort } from '@fortawesome/free-solid-svg-icons';
-import { TableHead } from './Table.styles';
-import FaIcon from '../../assets/FaIcon';
-import FlexBox from '../FlexBox';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface SortableTableHeadProps {
   index: number;
@@ -34,29 +32,30 @@ function SortableTableHead({
   };
 
   return (
-    <TableHead
+    <th
       key={`header${index}`}
+      className="text-left text-white leading-5 hover:cursor-pointer"
       onClick={() => {
         if (sortable) {
           handleSort(name);
         }
       }}
     >
-      <FlexBox flexDirection="row">
+      <div className="flex flex-row">
         {title}
         {sortable && (
-          <FaIcon
+          <FontAwesomeIcon
             role="img"
             aria-label="sort-icon"
             icon={
               // eslint-disable-next-line no-nested-ternary
               sortExpression.includes('+') ? faSortDown : sortExpression.includes('-') ? faSortUp : faSort
             }
-            px="1rem"
+            className="px-1"
           />
         )}
-      </FlexBox>
-    </TableHead>
+      </div>
+    </th>
   );
 }
 

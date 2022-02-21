@@ -33,7 +33,7 @@ function App() {
   const [, setCartItemsTotal] = useAtom(cartItemsAtom);
 
   const fetchNumberOfCartItems = async () => {
-    const data = await queryClient.fetchQuery(['basket'], () => api.get(getBaseUrl()));
+    const data = await queryClient.fetchQuery(['basketItems'], () => api.get(getBaseUrl()));
     setCartItemsTotal(data.length);
   };
 

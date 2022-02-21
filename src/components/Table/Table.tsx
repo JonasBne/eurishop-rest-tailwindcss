@@ -1,14 +1,13 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { SpaceProps } from 'styled-system';
 import FaIcon from '../../assets/FaIcon';
 import SortableTableHead from './SortableTableHead';
-import { StyledTable, TableRow, TableData } from './Table.styles';
-import FlexBox from '../FlexBox';
 import Button from '../Button';
 
 interface Column {
@@ -18,7 +17,7 @@ interface Column {
   id: string;
 }
 
-interface TableProps extends SpaceProps {
+interface TableProps {
   data: any[];
   onRowClick?: (productId: string) => void;
   onActionClick?: (productId: string) => void;
@@ -36,13 +35,12 @@ function Table({
   onRowClick,
   onActionClick,
   onLoadData,
-  ...space
 }: TableProps) {
   return (
     <>
-      <StyledTable {...space} role="table">
+      <table role="table" className="border-collapse rounded overflow-hidden shadow-lg">
         <thead>
-          <TableRow role="row">
+          <tr role="row" className="h-14">
             {columns.map((col, index) => (
               <SortableTableHead
                 title={col.label}
@@ -54,15 +52,16 @@ function Table({
                 key={col.id}
               />
             ))}
-          </TableRow>
+          </tr>
         </thead>
         <tbody role="tablebody">
           {data.map((item: any, dataIndex) => (
-            <TableRow key={item.id} role="row">
+            <tr key={item.id} role="row" className="h-14">
               {Object.keys(data[0]).map((title: any, index) => (
-                <TableData
+                <td
                   role="cell"
                   key={`item${index}${dataIndex}`}
+                  className="w-full p-1 m-1 text-left"
                   onClick={() => {
                     if (onRowClick !== undefined) {
                       onRowClick(item.id);
@@ -70,9 +69,9 @@ function Table({
                   }}
                 >
                   {item[title]}
-                </TableData>
+                </td>
               ))}
-              <TableData role="cell">
+              <td role="cell" className="text-left">
                 <FaIcon
                   role="img"
                   aria-label="trash-bin"
@@ -86,16 +85,16 @@ function Table({
                     }
                   }}
                 />
-              </TableData>
-            </TableRow>
+              </td>
+            </tr>
           ))}
         </tbody>
-      </StyledTable>
-      <FlexBox justifyContent="center">
+      </table>
+      <div className="flex justify-center items-center">
         <Button type="button" variant="primary" onClick={onLoadData}>
           LOAD MORE...
         </Button>
-      </FlexBox>
+      </div>
     </>
   );
 }
