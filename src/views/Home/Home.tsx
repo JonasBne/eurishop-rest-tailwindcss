@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/aria-role */
 import React, { useState, useEffect } from 'react';
 import { useGetProducts } from '../../api/productsApi';
 import ErrorModal from '../../components/ErrorModal/ErrorModal';

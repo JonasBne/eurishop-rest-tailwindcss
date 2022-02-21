@@ -32,14 +32,14 @@ describe('shopping cart', () => {
   });
 
   test('renders a total cost', () => {
-    render(<ShoppingCart cartItems={cartItems} onUpdate={mockOnUpdate} onClear={mockOnClear} />);
+    render(<ShoppingCart />);
 
     const totalCost = parseInt(calculateTotalCartCost(cartItems), 10);
     expect(totalCost).toBe(15);
   });
 
   test('click fires onClear event', () => {
-    render(<ShoppingCart cartItems={cartItems} onUpdate={mockOnUpdate} onClear={mockOnClear} />);
+    render(<ShoppingCart />);
 
     const clearBtn = screen.getByRole('button', { name: /clear/i });
     userEvent.click(clearBtn);
@@ -48,7 +48,7 @@ describe('shopping cart', () => {
   });
 
   test('renders two cart items', () => {
-    render(<ShoppingCart cartItems={cartItems} onUpdate={mockOnUpdate} onClear={mockOnClear} />);
+    render(<ShoppingCart />);
 
     const items = screen.getAllByRole('cart-item');
 
@@ -56,7 +56,7 @@ describe('shopping cart', () => {
   });
 
   test('click fires onUpdate event with action decrement quantity 0 and productId 1', async () => {
-    render(<ShoppingCart cartItems={cartItems} onUpdate={mockOnUpdate} onClear={mockOnClear} />);
+    render(<ShoppingCart />);
 
     const items = screen.getAllByRole('cart-item');
     const button = await waitFor(() => within(items[0]).findByRole('button', { name: '-' }));
@@ -68,7 +68,7 @@ describe('shopping cart', () => {
   });
 
   test('click fires onUpdate event with action increment quantity 2 and productId 1', async () => {
-    render(<ShoppingCart cartItems={cartItems} onUpdate={mockOnUpdate} onClear={mockOnClear} />);
+    render(<ShoppingCart />);
 
     const items = screen.getAllByRole('cart-item');
     const button = await waitFor(() => within(items[0]).findByRole('button', { name: '+' }));

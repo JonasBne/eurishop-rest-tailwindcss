@@ -10,7 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleRedirect = () => {
-    navigate('home');
+    navigate('cart');
   };
 
   const handleClick = () => {

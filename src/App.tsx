@@ -2,9 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
-// eslint-disable-next-line import/no-cycle
 import Navbar from './views/Navigation/Navbar';
-// eslint-disable-next-line import/no-cycle
 import Home from './views/Home/Home';
 import ProductEdit from './views/ProductDetail/ProductEdit';
 import ProductList from './views/ProductList/ProductList';
