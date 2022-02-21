@@ -33,7 +33,11 @@ TODO
 
 - fix key issue
 - how to make height of th fit the right columns content?
+- why is boolean value not displayed?
 
+- provide alternative component (hide certain columns on given breakpoints) (e.g. product card)
+- work with minimum width 
+- hide columns on certain breakpoints
 */
 
 function Table({
@@ -47,7 +51,7 @@ function Table({
 }: TableProps) {
   return (
     <>
-      <table className="table-fixed break-words grid grid-cols-2 my-8 mx-4 border-collapse shadow-2xl lg:hidden">
+      {/* <table className="table-fixed break-words grid grid-cols-2 my-8 mx-4 border-collapse shadow-2xl lg:hidden">
         {data.map((item, index) => (
           <>
             <thead key={`tablehead${item.id}${index}`} className="bg-teal-700 w-fit my-4">
@@ -99,14 +103,14 @@ function Table({
             </tbody>
           </>
         ))}
-      </table>
+      </table> */}
 
       <table role="table" className="hidden lg:block lg:rounded-xl lg:overflow-hidden lg:shadow-2xl my-8 mx-4">
         <thead>
           <tr role="row" className="h-14 bg-teal-700">
             {columns.map((col, index) => (
               <SortableTableHead
-                className="p-6"
+                className="p-6 hover:cursor-pointer"
                 title={col.label}
                 index={index}
                 name={col.name}
@@ -125,21 +129,22 @@ function Table({
                 <td
                   role="cell"
                   key={`item${index}${dataIndex}`}
-                  className="p-1 m-1 text-left"
+                  className="p-1 m-1 text-center hover:cursor-pointer"
                   onClick={() => {
                     if (onRowClick !== undefined) {
                       onRowClick(item.id);
                     }
                   }}
                 >
+                  {/* // TODO: check if there is a render function, if not then just use text  */}
                   {item[title]}
                 </td>
               ))}
-              <td role="cell" className="text-left">
+              <td role="cell" className="text-center">
                 <FontAwesomeIcon
                   role="img"
                   aria-label="trash-bin"
-                  className="px-1 mx-1 text-red-600"
+                  className="w-6 h-6 text-red-600"
                   icon={faTrash}
                   onClick={() => {
                     if (onActionClick !== undefined) {

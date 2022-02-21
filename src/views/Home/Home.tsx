@@ -5,6 +5,7 @@ import { useGetProducts } from '../../api/productsApi';
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import ProductCard from './ProductCard';
+// eslint-disable-next-line import/no-cycle
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import {
   useGetBasket,
@@ -16,12 +17,12 @@ import {
 import toasts from '../../components/toasts';
 import Button from '../../components/Button';
 // eslint-disable-next-line import/no-cycle
-import { cartIsOpenAtom } from '../../App';
+// import { cartIsOpenAtom } from '../../App';
 
 function Home() {
   const { succesToast, failToast } = toasts();
   const [page, setPage] = useState<number>(0);
-  const [cartIsOpen] = useAtom(cartIsOpenAtom);
+  // const [cartIsOpen] = useAtom(cartIsOpenAtom);
   const { isLoading, error, products } = useGetProducts(page);
   const { mutate: postItemToBasket, error: postBasketError, data: postedData } = useMutationBasketPost();
   const { mutate: patch, error: patchBasketError, data: patchedData } = useMutationBasketPatch();
