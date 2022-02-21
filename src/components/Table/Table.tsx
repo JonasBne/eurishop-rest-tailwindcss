@@ -50,7 +50,7 @@ function Table({
       <table className="table-fixed break-words grid grid-cols-2 my-8 mx-4 border-collapse shadow-2xl lg:hidden">
         {data.map((item, index) => (
           <>
-            <thead key={`tablehead${item.id}${index}`} className="bg-teal-600 w-fit my-4">
+            <thead key={`tablehead${item.id}${index}`} className="bg-teal-700 w-fit my-4">
               <tr className="flex flex-col my-2">
                 {columns.map((col, colIndex) => (
                   <SortableTableHead
@@ -100,6 +100,59 @@ function Table({
           </>
         ))}
       </table>
+
+      <table role="table" className="hidden lg:block lg:rounded-xl lg:overflow-hidden lg:shadow-2xl my-8 mx-4">
+        <thead>
+          <tr role="row" className="h-14 bg-teal-700">
+            {columns.map((col, index) => (
+              <SortableTableHead
+                className="p-6"
+                title={col.label}
+                index={index}
+                name={col.name}
+                sortable={col.sortable}
+                sortExpression={sortExpression}
+                setSortExpression={setSortExpression}
+                key={col.id}
+              />
+            ))}
+          </tr>
+        </thead>
+        <tbody role="tablebody">
+          {data.map((item: any, dataIndex) => (
+            <tr key={item.id} role="row" className="h-14">
+              {Object.keys(data[0]).map((title: any, index) => (
+                <td
+                  role="cell"
+                  key={`item${index}${dataIndex}`}
+                  className="p-1 m-1 text-left"
+                  onClick={() => {
+                    if (onRowClick !== undefined) {
+                      onRowClick(item.id);
+                    }
+                  }}
+                >
+                  {item[title]}
+                </td>
+              ))}
+              <td role="cell" className="text-left">
+                <FontAwesomeIcon
+                  role="img"
+                  aria-label="trash-bin"
+                  className="px-1 mx-1 text-red-600"
+                  icon={faTrash}
+                  onClick={() => {
+                    if (onActionClick !== undefined) {
+                      onActionClick(item.id);
+                    }
+                  }}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       <div className="flex justify-center items-center">
         <Button type="button" variant="secondary" onClick={onLoadData}>
           LOAD MORE...
