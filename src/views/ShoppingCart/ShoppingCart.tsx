@@ -1,10 +1,13 @@
 import React from 'react';
 import { faShoppingCart, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAtom } from 'jotai';
 import BasketItem from './BasketItem';
 import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
 import PaymentDetails from './PaymentDetails';
 import Button from '../../components/Button';
+// eslint-disable-next-line import/no-cycle
+import { cartIsOpenAtom } from '../../App';
 
 interface ShoppingCartProps {
   cartItems: CartItem[];
@@ -13,8 +16,14 @@ interface ShoppingCartProps {
 }
 
 function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
+  const [, setCartIsOpen] = useAtom(cartIsOpenAtom);
+
   const handleClear = () => {
     onClear();
+  };
+
+  const handleCloseCart = () => {
+    setCartIsOpen((preOpen) => !preOpen);
   };
 
   // TODO: handle redirect to products page when a user clicks on 'continue shopping' or 'start shopping'
@@ -39,7 +48,9 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                   <div className=" grid grid-cols-2 items-center md:flex md:justify-between md:items-center mt-6 pt-6 border-t">
                     <div className="flex items-center">
                       <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-500 hover:text-blue-700" />
-                      <Button variant="secondary">Continue Shopping</Button>
+                      <Button variant="secondary" onClick={handleCloseCart}>
+                        Continue Shopping
+                      </Button>
                     </div>
                     <Button variant="warning" className="py-2 px-4 justify-left" onClick={handleClear}>
                       Clear Basket
@@ -62,7 +73,7 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                 <span className="p-5">Your cart is empty.</span>
                 <div className="flex items-center mt-6">
                   <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 text-blue-600 hover:text-blue-800" />
-                  <Button variant="secondary" className="py-1 px-2">
+                  <Button variant="secondary" className="py-1 px-2" onClick={handleCloseCart}>
                     Start Shopping
                   </Button>
                 </div>
