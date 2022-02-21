@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useAtom } from 'jotai';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faSlash, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-// eslint-disable-next-line import/no-cycle
-import { cartIsOpenAtom, cartItemsAtom } from '../../App';
+import { faBars, faSlash } from '@fortawesome/free-solid-svg-icons';
+import ShoppingBagIcon from './ShoppingBagIcon';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItemsTotal] = useAtom(cartItemsAtom);
-  const [, setCartIsOpen] = useAtom(cartIsOpenAtom);
+
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate('home');
+  };
 
   const handleClick = () => {
     setIsOpen((preOpen) => !preOpen);
-  };
-
-  const handleCartClick = () => {
-    setCartIsOpen((preOpen) => !preOpen);
   };
 
   return (
@@ -26,16 +24,7 @@ function Navbar() {
           <h2 className="text-left text-white font-semibold sm:text-2xl lg:text-3xl font-mono">Eurishop</h2>
         </div>
         <div className="flex items-center">
-          <div className="sm:hidden">
-            <FontAwesomeIcon
-              icon={faShoppingBag}
-              className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
-              onClick={handleCartClick}
-            />
-            <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
-              {cartItemsTotal}
-            </span>
-          </div>
+          <ShoppingBagIcon className="md:hidden" onBagClick={handleRedirect} />
           <div className="sm:hidden">
             <button
               type="button"
@@ -60,16 +49,7 @@ function Navbar() {
           Products
         </Link>
       </div>
-      <div className=" hidden sm:block">
-        <FontAwesomeIcon
-          icon={faShoppingBag}
-          className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
-          onClick={handleCartClick}
-        />
-        <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
-          {cartItemsTotal}
-        </span>
-      </div>
+      <ShoppingBagIcon className="hidden md:block" onBagClick={handleRedirect} />
     </header>
   );
 }
