@@ -37,7 +37,7 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                         <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
                       ))}
                     </div>
-                    <div className="flex justify-between items-center mt-6 pt-6 border-t">
+                    <div className=" grid grid-cols-2 items-center md:flex md:justify-between md:items-center mt-6 pt-6 border-t">
                       <div className="flex items-center">
                         <FontAwesomeIcon
                           icon={faArrowLeft}
@@ -45,7 +45,7 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                         />
                         <Button variant="secondary">Continue Shopping</Button>
                       </div>
-                      <Button variant="warning" className="py-2 px-4">
+                      <Button variant="warning" className="py-2 px-4 justify-left" onClick={handleClear}>
                         Clear Basket
                       </Button>
                       <div className="flex justify-center items-end">
@@ -76,40 +76,6 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
           </div>
         ))}
     </>
-  );
-
-  return (
-    <div className="w-full mt-2 mr-1 rounded shadow-2xl">
-      <h2 aria-level={2}>
-        Shopping Cart
-        <FontAwesomeIcon icon={faShoppingCart} className="ml-1" />
-      </h2>
-      <div>
-        {cartItems.length > 0 ? (
-          cartItems.map((item) => (
-            <div key={item.product.id} className="pl-1">
-              <BasketItem item={item} onUpdate={onUpdate} data-test-id={item.product.id} />
-              <hr />
-            </div>
-          ))
-        ) : (
-          <div className="my-2 mx-3">Oops, your cart looks empty...</div>
-        )}
-      </div>
-      {cartItems.length > 0 && (
-        <div>
-          <h3 className="mt-2 mb-3 text-center">{`TOTAL: € ${calculateTotalCartCost(cartItems)}`}</h3>
-          <div className="flex justify-center m-2">
-            <button type="button" onClick={handleClear}>
-              CLEAR
-            </button>
-            <button type="button" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
-              ORDER
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
   );
 }
 
