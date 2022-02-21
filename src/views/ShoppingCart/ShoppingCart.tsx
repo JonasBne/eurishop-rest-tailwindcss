@@ -26,8 +26,6 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
     setCartIsOpen((preOpen) => !preOpen);
   };
 
-  // TODO: handle redirect to products page when a user clicks on 'continue shopping' or 'start shopping'
-  // TODO: cart should not always be shown - fix with context
   return (
     <div className="max-w-md mx-auto shadow-lg border-2 border-solid border-gray-300 bg-gray-50 rounded-lg mt-6 md:max-w-5xl">
       <div className="md:flex ">
