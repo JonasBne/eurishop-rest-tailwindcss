@@ -11,6 +11,8 @@ function Navbar() {
   const [cartItemsTotal] = useAtom(cartItemsAtom);
   const [, setCartIsOpen] = useAtom(cartIsOpenAtom);
 
+  console.log(cartItemsTotal);
+
   const handleClick = () => {
     setIsOpen((preOpen) => !preOpen);
   };
