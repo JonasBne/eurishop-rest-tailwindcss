@@ -38,11 +38,12 @@ function Table({
 }: TableProps) {
   return (
     <>
-      <table role="table" className="border-collapse rounded overflow-hidden shadow-lg">
+      <table role="table" className="rounded-xl overflow-hidden shadow-2xl m-14">
         <thead>
-          <tr role="row" className="h-14">
+          <tr role="row" className="h-14 bg-blue-900">
             {columns.map((col, index) => (
               <SortableTableHead
+                className="p-6"
                 title={col.label}
                 index={index}
                 name={col.name}
@@ -61,7 +62,7 @@ function Table({
                 <td
                   role="cell"
                   key={`item${index}${dataIndex}`}
-                  className="w-full p-1 m-1 text-left"
+                  className="w-fit p-1 m-1 text-left"
                   onClick={() => {
                     if (onRowClick !== undefined) {
                       onRowClick(item.id);
@@ -71,7 +72,7 @@ function Table({
                   {item[title]}
                 </td>
               ))}
-              <td role="cell" className="text-left">
+              <td role="cell" className=" w-fit text-left">
                 <FaIcon
                   role="img"
                   aria-label="trash-bin"

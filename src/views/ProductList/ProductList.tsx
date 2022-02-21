@@ -122,8 +122,6 @@ function ProductList() {
             onRowClick={handleRedirect}
             onActionClick={handleAction}
             onLoadData={handleLoadMoreData}
-            my="2.5rem"
-            mx="2rem"
           />
         </>
       )}

@@ -1,4 +1,6 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
+import classNames from 'classnames';
 import { faSortDown, faSortUp, faSort } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -9,6 +11,7 @@ interface SortableTableHeadProps {
   sortable: boolean;
   sortExpression: string;
   setSortExpression: (prevSortExp: any) => void;
+  className?: string;
 }
 
 function SortableTableHead({
@@ -18,6 +21,7 @@ function SortableTableHead({
   sortable,
   sortExpression,
   setSortExpression,
+  className,
 }: SortableTableHeadProps) {
   const handleSort = (sortByField: string) => {
     setSortExpression((prevSortExp: any) => {
@@ -34,7 +38,7 @@ function SortableTableHead({
   return (
     <th
       key={`header${index}`}
-      className="text-left text-white leading-5 hover:cursor-pointer"
+      className={classNames(className, 'text-left text-white leading-5 hover:cursor-pointer')}
       onClick={() => {
         if (sortable) {
           handleSort(name);
@@ -51,7 +55,7 @@ function SortableTableHead({
               // eslint-disable-next-line no-nested-ternary
               sortExpression.includes('+') ? faSortDown : sortExpression.includes('-') ? faSortUp : faSort
             }
-            className="px-1"
+            className="bg-red-400 w-4 h-4 px-1"
           />
         )}
       </div>
