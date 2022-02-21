@@ -1,29 +1,68 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faShoppingCart, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAtom } from 'jotai';
+import { useNavigate } from 'react-router';
 import BasketItem from './BasketItem';
-import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
+import { calculateTotalCartCost } from '../../domain/shoppingCart';
 import PaymentDetails from './PaymentDetails';
 import Button from '../../components/Button';
-// eslint-disable-next-line import/no-cycle
-import { cartIsOpenAtom } from '../../App';
+import {
+  useGetBasket,
+  useMutationBasketClear,
+  useMutationBasketPatch,
+  useMutationBasketRemoveItem,
+} from '../../api/basketApi';
+import toasts from '../../components/toasts';
 
-interface ShoppingCartProps {
-  cartItems: CartItem[];
-  onUpdate: (quantity: number, productId: string | number) => void;
-  onClear: () => void;
-}
+function ShoppingCart() {
+  const { succesToast, failToast } = toasts();
 
-function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
-  const [, setCartIsOpen] = useAtom(cartIsOpenAtom);
+  const navigate = useNavigate();
 
-  const handleClear = () => {
-    onClear();
+  const { cart, cartRefetch } = useGetBasket();
+  const cartItems = cart?.items ?? [];
+  const { mutate: patch, error: patchBasketError, data: patchedData } = useMutationBasketPatch();
+  const { mutate: clearBasket, error: clearBasketError, data: clearedData } = useMutationBasketClear();
+  const { mutate: removeItem, error: removeItemError, data: removedData } = useMutationBasketRemoveItem();
+
+  useEffect(() => {
+    if (patchBasketError) {
+      failToast(patchBasketError);
+    }
+    if (removeItemError) {
+      failToast(removeItemError);
+    }
+    if (clearBasketError) {
+      failToast(clearBasketError);
+    }
+    if (patchedData || removedData || clearedData) {
+      succesToast('Success!');
+      cartRefetch();
+    }
+  }, [patchBasketError, removeItemError, clearBasketError, patchedData, removedData, clearedData]);
+
+  const handleUpdate = (quantity: number, productId: string | number) => {
+    if (quantity === 0) {
+      removeItem({
+        productId,
+      });
+    }
+    if (quantity > 0) {
+      patch({
+        data: {
+          quantity,
+        },
+        productId,
+      });
+    }
   };
 
-  const handleCloseCart = () => {
-    setCartIsOpen((preOpen) => !preOpen);
+  const handleClear = () => {
+    clearBasket();
+  };
+
+  const handleRedirect = () => {
+    navigate('/home');
   };
 
   return (
@@ -40,13 +79,13 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                 <>
                   <div className="flex flex-col mt-6 pt-6">
                     {cartItems.map((cartItem) => (
-                      <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={onUpdate} />
+                      <BasketItem key={cartItem.product.id} item={cartItem} onUpdate={handleUpdate} />
                     ))}
                   </div>
                   <div className=" grid grid-cols-2 items-center md:flex md:justify-between md:items-center mt-6 pt-6 border-t">
                     <div className="flex items-center">
                       <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 mr-2 text-blue-500 hover:text-blue-700" />
-                      <Button variant="secondary" onClick={handleCloseCart}>
+                      <Button variant="secondary" onClick={handleRedirect}>
                         Continue Shopping
                       </Button>
                     </div>
@@ -71,7 +110,7 @@ function ShoppingCart({ cartItems, onUpdate, onClear }: ShoppingCartProps) {
                 <span className="p-5">Your cart is empty.</span>
                 <div className="flex items-center mt-6">
                   <FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6 text-blue-600 hover:text-blue-800" />
-                  <Button variant="secondary" className="py-1 px-2" onClick={handleCloseCart}>
+                  <Button variant="secondary" className="py-1 px-2" onClick={handleRedirect}>
                     Start Shopping
                   </Button>
                 </div>
