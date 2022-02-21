@@ -38,87 +38,62 @@ function Table({
   onLoadData,
 }: TableProps) {
   return (
-    <table className="m-8">
-      <thead className="bg-blue-800">
-        <tr className="flex flex-col my-2 md:block">
-          {columns.map((col, index) => (
-            <SortableTableHead
-              className="py-2 px-3 text-sm"
-              title={col.label}
-              index={index}
-              name={col.name}
-              sortable={col.sortable}
-              sortExpression={sortExpression}
-              setSortExpression={setSortExpression}
-              key={col.id}
-            />
-          ))}
-        </tr>
-      </thead>
+    <table className="grid grid-cols-2 my-8 lg:hidden">
+      {data.map((item) => (
+        <>
+          <thead key={`tablehead${item.id}`} className="bg-blue-800 my-4">
+            <tr className="flex flex-col my-2">
+              {columns.map((col, index) => (
+                <SortableTableHead
+                  className="py-2 px-3 text-sm"
+                  title={col.label}
+                  index={index}
+                  name={col.name}
+                  sortable={col.sortable}
+                  sortExpression={sortExpression}
+                  setSortExpression={setSortExpression}
+                  key={col.id}
+                />
+              ))}
+            </tr>
+          </thead>
+          <tbody role="tablebody" key={`tablebody${item.id}`}>
+            <tr key={`tablerow${item.id}`} role="row" className="flex flex-col">
+              {Object.keys(data[0]).map((title: any, index) => (
+                <td
+                  role="cell"
+                  key={`tabledata${item.id}`}
+                  className="p-1 m-1 text-left"
+                  onClick={() => {
+                    if (onRowClick !== undefined) {
+                      onRowClick(item.id);
+                    }
+                  }}
+                >
+                  {item[title]}
+                </td>
+              ))}
+              <td role="cell" className="text-left">
+                <FaIcon
+                  role="img"
+                  aria-label="trash-bin"
+                  icon={faTrash}
+                  px="0.25rem"
+                  color="red"
+                  mx="1rem"
+                  onClick={() => {
+                    if (onActionClick !== undefined) {
+                      onActionClick(item.id);
+                    }
+                  }}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </>
+      ))}
     </table>
   );
-  // return (
-  //   <>
-  //     <table role="table" className="flex flex-col rounded-xl overflow-hidden shadow-2xl m-14">
-  //       <thead className="flex flex-col">
-  //         <tr role="row" className="h-14 bg-blue-900">
-  //           {columns.map((col, index) => (
-  //             <SortableTableHead
-  //               className="p-6"
-  //               title={col.label}
-  //               index={index}
-  //               name={col.name}
-  //               sortable={col.sortable}
-  //               sortExpression={sortExpression}
-  //               setSortExpression={setSortExpression}
-  //               key={col.id}
-  //             />
-  //           ))}
-  //         </tr>
-  //       </thead>
-  //       <tbody role="tablebody">
-  //         {data.map((item: any, dataIndex) => (
-  //           <tr key={item.id} role="row" className="h-14">
-  //             {Object.keys(data[0]).map((title: any, index) => (
-  //               <td
-  //                 role="cell"
-  //                 key={`item${index}${dataIndex}`}
-  //                 className="p-1 m-1 text-left"
-  //                 onClick={() => {
-  //                   if (onRowClick !== undefined) {
-  //                     onRowClick(item.id);
-  //                   }
-  //                 }}
-  //               >
-  //                 {item[title]}
-  //               </td>
-  //             ))}
-  //             <td role="cell" className="text-left">
-  //               <FaIcon
-  //                 role="img"
-  //                 aria-label="trash-bin"
-  //                 icon={faTrash}
-  //                 px="0.25rem"
-  //                 color="red"
-  //                 mx="1rem"
-  //                 onClick={() => {
-  //                   if (onActionClick !== undefined) {
-  //                     onActionClick(item.id);
-  //                   }
-  //                 }}
-  //               />
-  //             </td>
-  //           </tr>
-  //         ))}
-  //       </tbody>
-  //     </table>
-  //     <div className="flex justify-center items-center">
-  //       <Button type="button" variant="primary" onClick={onLoadData}>
-  //         LOAD MORE...
-  //       </Button>
-  //     </div>
-  //   </>
-  // );
 }
 
 export default Table;
