@@ -22,6 +22,7 @@ const products = [
   },
   {
     id: 3,
+    title: 'et',
     sku: 'CCC',
     price: 10.0,
     basePrice: 10.0,

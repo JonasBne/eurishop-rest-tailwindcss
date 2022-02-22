@@ -42,6 +42,7 @@ function BasketItem({ item, onUpdate }: BasketItemProps) {
       <div className="flex items-center my-4 md:my-0">
         <div className="md:pr-8 flex items-center mx-10">
           <FontAwesomeIcon
+            data-testid="minus-svg"
             icon={faMinus}
             className="w-3 h-3 block hover:cursor-pointer"
             onClick={() => handleUpdate('decrement')}
@@ -50,6 +51,7 @@ function BasketItem({ item, onUpdate }: BasketItemProps) {
             {item.quantity}
           </div>
           <FontAwesomeIcon
+            data-testid="plus-svg"
             icon={faPlus}
             className="w-3 h-3 block hover:cursor-pointer"
             onClick={() => handleUpdate('increment')}

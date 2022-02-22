@@ -18,6 +18,7 @@ function App() {
   // TODO: option 2 show cart as modal (belongs to navbar)
   // TODO: option 3 different navbar layout per view (instead of rendering in App)
   // TODO: check the number of queries that are performed (both Home and ShoppingBag perform the same call)
+  // TODO: run and fix tests
 
   return (
     <QueryClientProvider client={queryClient}>
