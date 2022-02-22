@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import React from 'react';
@@ -64,8 +63,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
     >
       <h2 className="font-mono bg-blue-800 text-white text-center py-3 text-sm md:text-xl">{title}</h2>
       <div>
-        <Label htmlFor="sku">
-          Serial number
+        <Label label="Serial number" htmlFor="sku">
           <input
             id="sku"
             type="text"
@@ -74,77 +72,53 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
           />
         </Label>
 
-        <label
-          htmlFor="title"
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-        >
-          Title
+        <Label label="Title" htmlFor="title">
           <input
             id="title"
             type="text"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
             {...register('title')}
           />
-        </label>
+        </Label>
 
-        <label
-          htmlFor="stocked"
-          className="flex flex-col uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-        >
-          In stock
+        <Label label="In stock" htmlFor="stocked">
           <input id="stocked" type="checkbox" className="m-4" {...register('stocked')} />
-        </label>
+        </Label>
 
-        <label
-          htmlFor="base-price"
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-        >
-          Base price
+        <Label label="Base price" htmlFor="base-price">
           <input
             id="base-price"
             type="text"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
             {...register('basePrice')}
           />
-        </label>
+        </Label>
 
-        <label
-          htmlFor="price"
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-        >
-          Unit price
+        <Label label="Unit price" htmlFor="price">
           <input
             id="price"
             type="text"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
             {...register('price')}
           />
-        </label>
+        </Label>
 
-        <label
-          htmlFor="image"
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-        >
-          Image URL
+        <Label label="Image URL" htmlFor="image">
           <input
             id="image"
             type="text"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
             {...register('image')}
           />
-        </label>
+        </Label>
 
-        <label
-          htmlFor="desc"
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-        >
-          Description
+        <Label label="Description" htmlFor="desc">
           <textarea
             id="desc"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
             {...register('desc')}
           />
-        </label>
+        </Label>
       </div>
       <div className="flex justify-center">
         <Button type="button" variant="danger" className="px-3 py-1 mx-2" onClick={handleCancel}>

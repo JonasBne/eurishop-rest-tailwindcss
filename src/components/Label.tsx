@@ -1,15 +1,15 @@
 /* eslint-disable react/require-default-props */
-import React, { ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 import classNames from 'classnames';
 
 interface LabelProps {
   label: string;
-  input: ReactNode;
+  children: ReactElement;
   htmlFor: string;
   className?: string;
 }
 
-function Label({ label, input, htmlFor, className }: LabelProps) {
+function Label({ label, children, htmlFor, className }: LabelProps) {
   return (
     <label
       className={classNames(
@@ -19,7 +19,7 @@ function Label({ label, input, htmlFor, className }: LabelProps) {
       htmlFor={htmlFor}
     >
       {label}
-      {input}
+      {children}
     </label>
   );
 }
