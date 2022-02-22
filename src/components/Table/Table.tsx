@@ -1,11 +1,13 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faTrash } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import SortableTableHead from './SortableTableHead';
 import Button from '../Button';
@@ -15,7 +17,6 @@ interface Column {
   name: string;
   label: string;
   sortable: boolean;
-  minWidth: number;
   render?: (row: any) => void;
   id: string;
 }
@@ -44,6 +45,7 @@ function Table({
   sortExpression,
   setSortExpression,
   onRowClick = noop,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onActionClick = noop,
   onLoadData,
 }: TableProps) {
@@ -67,36 +69,26 @@ function Table({
           </tr>
         </thead>
         <tbody role="tablebody">
-          {data.map((item: any, dataIndex) => (
-            <tr key={item.id} role="row" className="h-14">
-              {Object.keys(data[0]).map((title: any, index) => (
+          {data.map((item, index) => (
+            <tr key={`row${item.id}`}>
+              {Object.keys(data[index]).map((key: any, keyIndex) => (
                 <td
                   role="cell"
-                  key={`item${index}${dataIndex}`}
-                  className="p-1 m-1 text-left hover:cursor-pointer"
+                  key={`item${index}${keyIndex}`}
                   onClick={() => {
                     if (onRowClick !== undefined) {
                       onRowClick(item.id);
                     }
                   }}
                 >
-                  {/* // TODO: check if there is a render function, if not then just use text  */}
-                  {item[title]}
+                  {columns.map((col) => {
+                    if (col.name === key && col.render) {
+                      return col.render(item);
+                    }
+                  })}
+                  {item[key]}
                 </td>
               ))}
-              <td role="cell" className="text-center">
-                <FontAwesomeIcon
-                  role="img"
-                  aria-label="trash-bin"
-                  className="w-6 h-6 text-red-600"
-                  icon={faTrash}
-                  onClick={() => {
-                    if (onActionClick !== undefined) {
-                      onActionClick(item.id);
-                    }
-                  }}
-                />
-              </td>
             </tr>
           ))}
         </tbody>

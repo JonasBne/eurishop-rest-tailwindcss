@@ -49,13 +49,6 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
     onSubmit(formValues);
   };
 
-  /*
-
-  TODO: 
-  No alternative for grid template areas?
-
-  */
-
   return (
     <form
       className="max-w-sx rounded-md border-1 border-gray-300 overflow-hidden mt-4 mx-3 md:max-w-2xl md:mx-auto md:mt-8 md:text-xl "
