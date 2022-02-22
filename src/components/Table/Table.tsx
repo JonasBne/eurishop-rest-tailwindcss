@@ -12,11 +12,11 @@ import SortableTableHead from './SortableTableHead';
 import Button from '../Button';
 import noop from '../../utils/noop';
 
-interface Column {
+export interface Column {
   name: string;
   label: string;
   sortable: boolean;
-  render?: (row: any) => void;
+  render?: (row: any) => any;
   id: string;
 }
 
@@ -29,14 +29,6 @@ interface TableProps {
   setSortExpression: (prevSortExp: any) => void;
   columns: Column[];
 }
-
-/*
-
-TODO
-
-- provide alternative component (hide certain columns on given breakpoints) (e.g. product card) OR
-- hide columns on certain breakpoints
-*/
 
 function Table({
   data,

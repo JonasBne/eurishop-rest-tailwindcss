@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useGetProducts, useMutationProductRemove } from '../../api/productsApi';
-import Table from '../../components/Table/Table';
+import Table, { Column } from '../../components/Table/Table';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import sortBy from '../../utils/sortBy';
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
@@ -39,7 +39,7 @@ function ProductList() {
   const sortedProducts = sortBy(products ?? [], sortExpression);
 
   // TODO: visibility based on breakpoints
-  const columns = [
+  const columns: Column[] = [
     {
       name: 'id',
       label: 'Product ID',
