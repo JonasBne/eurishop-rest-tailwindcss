@@ -2,6 +2,7 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Input from '../../components/Input';
 import Label from '../../components/Label';
 import Button from '../../components/Button';
 import Product from '../../domain/product';

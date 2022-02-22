@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import classNames from 'classnames';
@@ -6,11 +7,12 @@ interface InputProps {
   className?: string;
   id: string;
   type: string;
+  name: string;
   placeholder?: string;
-  defaultValue?: any;
+  register: (name: string) => void;
 }
 
-function Input({ className, id, type, placeholder, defaultValue }: InputProps) {
+function Input({ className, id, type, name, placeholder, register }: InputProps) {
   return (
     <input
       className={classNames(
@@ -19,8 +21,9 @@ function Input({ className, id, type, placeholder, defaultValue }: InputProps) {
       )}
       id={id}
       type={type}
+      name={name}
       placeholder={placeholder}
-      value={defaultValue}
+      {...register(name)}
     />
   );
 }
