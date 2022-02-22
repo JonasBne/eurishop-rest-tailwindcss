@@ -3,6 +3,7 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Label from '../../components/Label';
 import Button from '../../components/Button';
 import Product from '../../domain/product';
 
@@ -63,10 +64,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
     >
       <h2 className="font-mono bg-blue-800 text-white text-center py-3 text-sm md:text-xl">{title}</h2>
       <div>
-        <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full md:text-base"
-          htmlFor="sku"
-        >
+        <Label htmlFor="sku">
           Serial number
           <input
             id="sku"
@@ -74,7 +72,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
             {...register('sku')}
           />
-        </label>
+        </Label>
 
         <label
           htmlFor="title"

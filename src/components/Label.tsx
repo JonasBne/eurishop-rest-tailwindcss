@@ -3,12 +3,13 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 interface LabelProps {
+  label: string;
   input: ReactNode;
   htmlFor: string;
   className?: string;
 }
 
-function Label({ input, htmlFor, className }: LabelProps) {
+function Label({ label, input, htmlFor, className }: LabelProps) {
   return (
     <label
       className={classNames(
@@ -17,6 +18,7 @@ function Label({ input, htmlFor, className }: LabelProps) {
       )}
       htmlFor={htmlFor}
     >
+      {label}
       {input}
     </label>
   );
