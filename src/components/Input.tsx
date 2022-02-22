@@ -9,7 +9,7 @@ interface InputProps {
   type: string;
   name: string;
   placeholder?: string;
-  register: (name: string) => void;
+  register: any;
 }
 
 function Input({ className, id, type, name, placeholder, register }: InputProps) {
@@ -23,7 +23,7 @@ function Input({ className, id, type, name, placeholder, register }: InputProps)
       type={type}
       name={name}
       placeholder={placeholder}
-      {...register(name)}
+      {...register}
     />
   );
 }

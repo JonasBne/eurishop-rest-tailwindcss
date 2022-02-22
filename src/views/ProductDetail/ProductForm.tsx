@@ -53,8 +53,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
 
   TODO: 
   No alternative for grid template areas?
-  How to spread register on a custom input component?
-  fix code duplication
+
   */
 
   return (
@@ -65,21 +64,11 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
       <h2 className="font-mono bg-blue-800 text-white text-center py-3 text-sm md:text-xl">{title}</h2>
       <div>
         <Label label="Serial number" htmlFor="sku">
-          <input
-            id="sku"
-            type="text"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
-            {...register('sku')}
-          />
+          <Input id="sku" name="sku" type="text" register={register('sku')} />
         </Label>
 
         <Label label="Title" htmlFor="title">
-          <input
-            id="title"
-            type="text"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
-            {...register('title')}
-          />
+          <Input id="title" name="title" type="text" register={register('title')} />
         </Label>
 
         <Label label="In stock" htmlFor="stocked">
@@ -87,30 +76,15 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
         </Label>
 
         <Label label="Base price" htmlFor="base-price">
-          <input
-            id="base-price"
-            type="text"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
-            {...register('basePrice')}
-          />
+          <Input id="base-price" name="base-price" type="text" register={register('basePrice')} />
         </Label>
 
         <Label label="Unit price" htmlFor="price">
-          <input
-            id="price"
-            type="text"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
-            {...register('price')}
-          />
+          <Input id="price" name="price" type="text" register={register('price')} />
         </Label>
 
         <Label label="Image URL" htmlFor="image">
-          <input
-            id="image"
-            type="text"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 md:text-base"
-            {...register('image')}
-          />
+          <Input id="image" name="image" type="text" register={register('image')} />
         </Label>
 
         <Label label="Description" htmlFor="desc">
