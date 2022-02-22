@@ -6,9 +6,8 @@
 /* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-// import { faTrash } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SortableTableHead from './SortableTableHead';
 import Button from '../Button';
 import noop from '../../utils/noop';
@@ -45,7 +44,6 @@ function Table({
   sortExpression,
   setSortExpression,
   onRowClick = noop,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onActionClick = noop,
   onLoadData,
 }: TableProps) {
@@ -56,7 +54,7 @@ function Table({
           <tr role="row" className="bg-teal-700">
             {columns.map((col, index) => (
               <SortableTableHead
-                className={classNames('p-6 hover:cursor-pointer')}
+                className="p-6 hover:cursor-pointer"
                 title={col.label}
                 index={index}
                 name={col.name}
@@ -74,6 +72,7 @@ function Table({
               {Object.keys(data[index]).map((key: any, keyIndex) => (
                 <td
                   role="cell"
+                  className="p-4 hover:cursor-pointer"
                   key={`item${index}${keyIndex}`}
                   onClick={() => {
                     if (onRowClick !== undefined) {
@@ -89,6 +88,19 @@ function Table({
                   {item[key]}
                 </td>
               ))}
+              <td role="cell" className="text-center">
+                <FontAwesomeIcon
+                  role="img"
+                  aria-label="trash-bin"
+                  className="text-red-600"
+                  icon={faTrash}
+                  onClick={() => {
+                    if (onActionClick !== undefined) {
+                      onActionClick(item.id);
+                    }
+                  }}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
