@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import React from 'react';
@@ -8,7 +9,6 @@ import Product from '../../domain/product';
 interface ProductFormProps {
   title: string;
   initialProduct?: Product;
-  gridTemplateAreas: string;
   onCancel?: () => void;
   onSubmit?: (formValues: ProductFormValues) => void;
 }
@@ -26,7 +26,7 @@ export interface ProductFormValues {
 
 const noop: any = () => {};
 
-function ProductForm({ initialProduct, gridTemplateAreas, onCancel = noop, onSubmit = noop, title }: ProductFormProps) {
+function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }: ProductFormProps) {
   const { register, handleSubmit } = useForm<ProductFormValues>({
     defaultValues: {
       id: initialProduct?.id?.toString(),
@@ -49,15 +49,31 @@ function ProductForm({ initialProduct, gridTemplateAreas, onCancel = noop, onSub
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormResult)}>
+    <form className="w-full max-w-lg" onSubmit={handleSubmit(handleFormResult)}>
       <h2>{title}</h2>
-      <div className="grid">
-        <label htmlFor="sku">
+      <div>
+        <label
+          className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          htmlFor="sku"
+        >
           Serial number
           <input id="sku" type="text" {...register('sku')} />
         </label>
 
-        <label htmlFor="title">
+        <label
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full"
+          htmlFor="grid-last-name"
+        >
+          Last Name
+        </label>
+        <input
+          className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-last-name"
+          type="text"
+          placeholder="Doe"
+        />
+
+        {/* <label htmlFor="title">
           Title
           <input id="title" type="text" {...register('title')} />
         </label>
@@ -85,16 +101,16 @@ function ProductForm({ initialProduct, gridTemplateAreas, onCancel = noop, onSub
         <label htmlFor="desc">
           Description
           <textarea id="desc" {...register('desc')} />
-        </label>
+        </label> */}
       </div>
-      <div className="flex flex-end mx-2 my-1">
+      {/* <div className="flex flex-end mx-2 my-1">
         <Button type="button" variant="danger" onClick={handleCancel}>
           Cancel
         </Button>
         <Button type="submit" variant="primary">
           Save
         </Button>
-      </div>
+      </div> */}
     </form>
   );
 }
