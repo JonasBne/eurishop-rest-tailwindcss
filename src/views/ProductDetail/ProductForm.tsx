@@ -58,7 +58,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
 
   return (
     <form
-      className="max-w-sx rounded-md overflow-hidden mt-4 mx-3 md:max-w-2xl md:mx-auto md:mt-8 md:text-xl "
+      className="max-w-sx rounded-md border-1 border-gray-300 overflow-hidden mt-4 mx-3 md:max-w-2xl md:mx-auto md:mt-8 md:text-xl "
       onSubmit={handleSubmit(handleFormResult)}
     >
       <h2 className="font-mono bg-blue-800 text-white text-center py-3 text-sm md:text-xl">{title}</h2>

@@ -20,7 +20,7 @@ function Home() {
     if (postedData) {
       succesToast('Success!');
     }
-  }, [postBasketError]);
+  }, [postBasketError, postedData]);
 
   const handleBuy = (productId: string | number) => {
     postItemToBasket({
