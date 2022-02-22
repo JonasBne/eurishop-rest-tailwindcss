@@ -6,19 +6,12 @@ import { render, screen, waitFor } from '../../tests/utils';
 
 const title = 'product form';
 
-const gridTemplateAreas = `
-"title sku"
-"basePrice price"
-"stocked image"
-"desc desc"
-`;
-
 const mockOnCancel = jest.fn();
 const mockOnSubmit = jest.fn();
 
 describe('product form', () => {
   test('click fires onSubmit', async () => {
-    render(<ProductForm title={title} gridTemplateAreas={gridTemplateAreas} onSubmit={mockOnSubmit} />);
+    render(<ProductForm title={title} onSubmit={mockOnSubmit} />);
 
     const button = screen.getByRole('button', { name: /save/i });
 
@@ -30,14 +23,7 @@ describe('product form', () => {
 
 describe('add new product', () => {
   test('form values are correctly passed to the onSubmit event', async () => {
-    render(
-      <ProductForm
-        title={title}
-        gridTemplateAreas={gridTemplateAreas}
-        onCancel={mockOnCancel}
-        onSubmit={mockOnSubmit}
-      />,
-    );
+    render(<ProductForm title={title} onCancel={mockOnCancel} onSubmit={mockOnSubmit} />);
 
     const titleInput = screen.getByLabelText(/title/i);
     const serialNumberInput = screen.getByLabelText(/serial number/i);
@@ -86,13 +72,7 @@ describe('edit existing product', () => {
   });
   test('inputs have default values', () => {
     render(
-      <ProductForm
-        title={title}
-        gridTemplateAreas={gridTemplateAreas}
-        initialProduct={initialProduct}
-        onCancel={mockOnCancel}
-        onSubmit={mockOnSubmit}
-      />,
+      <ProductForm title={title} initialProduct={initialProduct} onCancel={mockOnCancel} onSubmit={mockOnSubmit} />,
     );
 
     const titleInput = screen.getByLabelText(/title/i);
@@ -114,13 +94,7 @@ describe('edit existing product', () => {
 
   test('form values take into account changes by user', async () => {
     render(
-      <ProductForm
-        title={title}
-        gridTemplateAreas={gridTemplateAreas}
-        initialProduct={initialProduct}
-        onCancel={mockOnCancel}
-        onSubmit={mockOnSubmit}
-      />,
+      <ProductForm title={title} initialProduct={initialProduct} onCancel={mockOnCancel} onSubmit={mockOnSubmit} />,
     );
 
     const titleInput = screen.getByLabelText(/title/i);

@@ -52,65 +52,84 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
     <form className="w-full max-w-lg" onSubmit={handleSubmit(handleFormResult)}>
       <h2>{title}</h2>
       <div>
-        <label
-          className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          htmlFor="sku"
-        >
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full" htmlFor="sku">
           Serial number
-          <input id="sku" type="text" {...register('sku')} />
+          <input
+            id="sku"
+            type="text"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register('sku')}
+          />
+        </label>
+
+        <label htmlFor="title" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
+          Title
+          <input
+            id="title"
+            type="text"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register('title')}
+          />
         </label>
 
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full"
-          htmlFor="grid-last-name"
+          htmlFor="stocked"
+          className="flex flex-col uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full"
         >
-          Last Name
-        </label>
-        <input
-          className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="grid-last-name"
-          type="text"
-          placeholder="Doe"
-        />
-
-        {/* <label htmlFor="title">
-          Title
-          <input id="title" type="text" {...register('title')} />
-        </label>
-
-        <label htmlFor="stocked">
           In stock
-          <input id="stocked" type="checkbox" {...register('stocked')} />
+          <input id="stocked" type="checkbox" className="m-4" {...register('stocked')} />
         </label>
 
-        <label htmlFor="base-price">
+        <label
+          htmlFor="base-price"
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full"
+        >
           Base price
-          <input id="base-price" type="text" {...register('basePrice')} />
+          <input
+            id="base-price"
+            type="text"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register('basePrice')}
+          />
         </label>
 
-        <label htmlFor="price">
+        <label htmlFor="price" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
           Unit price
-          <input id="price" type="text" {...register('price')} />
+          <input
+            id="price"
+            type="text"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register('price')}
+          />
         </label>
 
-        <label htmlFor="image">
+        <label htmlFor="image" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
           Image URL
-          <input id="image" type="text" {...register('image')} />
+          <input
+            id="image"
+            type="text"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register('image')}
+          />
         </label>
 
-        <label htmlFor="desc">
+        <label htmlFor="desc" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
           Description
-          <textarea id="desc" {...register('desc')} />
-        </label> */}
+          <textarea
+            id="desc"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register('desc')}
+          />
+        </label>
       </div>
-      {/* <div className="flex flex-end mx-2 my-1">
+      <div className="flex flex-end mx-2 my-1">
         <Button type="button" variant="danger" onClick={handleCancel}>
           Cancel
         </Button>
         <Button type="submit" variant="primary">
           Save
         </Button>
-      </div> */}
+      </div>
     </form>
   );
 }

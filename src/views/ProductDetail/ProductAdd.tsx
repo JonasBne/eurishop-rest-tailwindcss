@@ -9,13 +9,6 @@ function ProductAdd() {
   const navigate = useNavigate();
   const { mutate, error: postError, data: postedProduct } = useMutationProductPost();
 
-  const gridTemplateAreas = `
-  "title sku"
-  "basePrice price"
-  "stocked image"
-  "desc desc"
-  `;
-
   useEffect(() => {
     if (postError) {
       failToast(postError);
@@ -40,16 +33,7 @@ function ProductAdd() {
     mutate(product);
   };
 
-  return (
-    <ProductForm
-      title="NEW PRODUCT"
-      gridTemplateAreas={gridTemplateAreas}
-      onCancel={handleCancel}
-      onSubmit={handleSubmit}
-      mt="2rem"
-      mx="auto"
-    />
-  );
+  return <ProductForm title="NEW PRODUCT" onCancel={handleCancel} onSubmit={handleSubmit} />;
 }
 
 export default ProductAdd;

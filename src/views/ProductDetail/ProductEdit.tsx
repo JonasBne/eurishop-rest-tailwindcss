@@ -15,13 +15,6 @@ function ProductEdit() {
   const { isLoading, error, product } = useGetProduct(productId!);
   const { mutate, error: putError, data: puttedData } = useMutationProductPut();
 
-  const gridTemplateAreas = `
-  "title sku"
-  "basePrice price"
-  "stocked image"
-  "desc desc"
-  `;
-
   useEffect(() => {
     if (putError) {
       failToast(putError);
@@ -52,15 +45,7 @@ function ProductEdit() {
       {isLoading && <LoadingSpinner />}
       {error && <ErrorModal name={error.name} message={error.message} />}
       {product && (
-        <ProductForm
-          title="EDIT PRODUCT"
-          gridTemplateAreas={gridTemplateAreas}
-          initialProduct={product}
-          onCancel={handleCancel}
-          onSubmit={handleSubmit}
-          mt="2rem"
-          mx="auto"
-        />
+        <ProductForm title="EDIT PRODUCT" initialProduct={product} onCancel={handleCancel} onSubmit={handleSubmit} />
       )}
     </>
   );
