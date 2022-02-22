@@ -1,28 +1,11 @@
-/* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { space, SpaceProps, layout, LayoutProps } from 'styled-system';
-import styled from 'styled-components';
-import Grid from '../../components/Grid';
-import Input from '../../components/Input';
-import Label from '../../components/Label';
-import TextArea from '../../components/TextArea';
-import Header from '../../components/Header';
 import Button from '../../components/Button';
-import FlexBox from '../../components/FlexBox';
 import Product from '../../domain/product';
 
-const StyledForm = styled.form<SpaceProps | LayoutProps>`
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  border-radius: 20px;
-  width: 40%;
-  background: ${({ theme }) => theme.colors.whites.primaryWhite};
-  ${space}
-  ${layout};
-`;
-
-interface ProductFormProps extends SpaceProps {
+interface ProductFormProps {
   title: string;
   initialProduct?: Product;
   gridTemplateAreas: string;
@@ -43,14 +26,7 @@ export interface ProductFormValues {
 
 const noop: any = () => {};
 
-function ProductForm({
-  initialProduct,
-  gridTemplateAreas,
-  onCancel = noop,
-  onSubmit = noop,
-  title,
-  ...spacing
-}: ProductFormProps) {
+function ProductForm({ initialProduct, gridTemplateAreas, onCancel = noop, onSubmit = noop, title }: ProductFormProps) {
   const { register, handleSubmit } = useForm<ProductFormValues>({
     defaultValues: {
       id: initialProduct?.id?.toString(),
@@ -73,55 +49,53 @@ function ProductForm({
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(handleFormResult)} {...spacing} role="form">
-      <Header p="2rem" as="h2" textAlign="center" variant="secondary">
-        {title}
-      </Header>
-      <Grid gridTemplateAreas={gridTemplateAreas}>
-        <Label htmlFor="sku" gridArea="sku">
+    <form onSubmit={handleSubmit(handleFormResult)}>
+      <h2>{title}</h2>
+      <div className="grid">
+        <label htmlFor="sku">
           Serial number
-          <Input id="sku" type="text" {...register('sku')} />
-        </Label>
+          <input id="sku" type="text" {...register('sku')} />
+        </label>
 
-        <Label htmlFor="title" gridArea="title">
+        <label htmlFor="title">
           Title
-          <Input id="title" type="text" {...register('title')} />
-        </Label>
+          <input id="title" type="text" {...register('title')} />
+        </label>
 
-        <Label htmlFor="stocked" gridArea="stocked">
+        <label htmlFor="stocked">
           In stock
-          <Input id="stocked" type="checkbox" {...register('stocked')} />
-        </Label>
+          <input id="stocked" type="checkbox" {...register('stocked')} />
+        </label>
 
-        <Label htmlFor="base-price" gridArea="basePrice">
+        <label htmlFor="base-price">
           Base price
-          <Input id="base-price" type="text" {...register('basePrice')} />
-        </Label>
+          <input id="base-price" type="text" {...register('basePrice')} />
+        </label>
 
-        <Label htmlFor="price" gridArea="price">
+        <label htmlFor="price">
           Unit price
-          <Input id="price" type="text" {...register('price')} />
-        </Label>
+          <input id="price" type="text" {...register('price')} />
+        </label>
 
-        <Label htmlFor="image" gridArea="image">
+        <label htmlFor="image">
           Image URL
-          <Input id="image" type="text" {...register('image')} />
-        </Label>
+          <input id="image" type="text" {...register('image')} />
+        </label>
 
-        <Label htmlFor="desc" gridArea="desc">
+        <label htmlFor="desc">
           Description
-          <TextArea id="desc" {...register('desc')} />
-        </Label>
-      </Grid>
-      <FlexBox mx="2rem" my="1rem" justifyContent="flex-end">
+          <textarea id="desc" {...register('desc')} />
+        </label>
+      </div>
+      <div className="flex flex-end mx-2 my-1">
         <Button type="button" variant="danger" onClick={handleCancel}>
           Cancel
         </Button>
         <Button type="submit" variant="primary">
           Save
         </Button>
-      </FlexBox>
-    </StyledForm>
+      </div>
+    </form>
   );
 }
 
