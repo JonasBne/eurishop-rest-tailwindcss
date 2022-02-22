@@ -48,11 +48,21 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
     onSubmit(formValues);
   };
 
+  /*
+
+  TODO: 
+  No alternative for grid template areas?
+  How to spread register on a custom input component?
+  */
+
   return (
-    <form className="w-full max-w-lg" onSubmit={handleSubmit(handleFormResult)}>
-      <h2>{title}</h2>
+    <form
+      className="max-w-sx lg:max-w-2xl rounded-md overflow-hidden mt-8 mx-3"
+      onSubmit={handleSubmit(handleFormResult)}
+    >
+      <h2 className="font-mono bg-blue-800 text-white text-center py-3 text-sm">{title}</h2>
       <div>
-        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full" htmlFor="sku">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full" htmlFor="sku">
           Serial number
           <input
             id="sku"
@@ -62,7 +72,10 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
           />
         </label>
 
-        <label htmlFor="title" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
+        <label
+          htmlFor="title"
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full"
+        >
           Title
           <input
             id="title"
@@ -74,7 +87,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
 
         <label
           htmlFor="stocked"
-          className="flex flex-col uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full"
+          className="flex flex-col uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full"
         >
           In stock
           <input id="stocked" type="checkbox" className="m-4" {...register('stocked')} />
@@ -82,7 +95,7 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
 
         <label
           htmlFor="base-price"
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full"
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full"
         >
           Base price
           <input
@@ -93,7 +106,10 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
           />
         </label>
 
-        <label htmlFor="price" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
+        <label
+          htmlFor="price"
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full"
+        >
           Unit price
           <input
             id="price"
@@ -103,7 +119,10 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
           />
         </label>
 
-        <label htmlFor="image" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
+        <label
+          htmlFor="image"
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full"
+        >
           Image URL
           <input
             id="image"
@@ -113,7 +132,10 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
           />
         </label>
 
-        <label htmlFor="desc" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 w-full">
+        <label
+          htmlFor="desc"
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-4 px-2 w-full"
+        >
           Description
           <textarea
             id="desc"
@@ -122,11 +144,11 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
           />
         </label>
       </div>
-      <div className="flex flex-end mx-2 my-1">
-        <Button type="button" variant="danger" onClick={handleCancel}>
+      <div className="flex justify-center">
+        <Button type="button" variant="danger" className="px-3" onClick={handleCancel}>
           Cancel
         </Button>
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" className="px-3">
           Save
         </Button>
       </div>
