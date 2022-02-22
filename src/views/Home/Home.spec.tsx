@@ -19,7 +19,7 @@ describe('failed query', () => {
 });
 
 describe('succesful query', () => {
-  test('renders a loading spinner, product cards and basket', async () => {
+  test('renders a loading spinner and product cards', async () => {
     server.use(getAllProducts);
     server.use(getSingleProduct);
     server.use(getBasket);
@@ -31,8 +31,5 @@ describe('succesful query', () => {
 
     const productCards = await screen.findAllByRole('card');
     expect(productCards.length).toBeGreaterThanOrEqual(1);
-
-    const basketItems = await screen.findAllByRole('cart-item');
-    expect(basketItems.length).toBeGreaterThanOrEqual(1);
   });
 });

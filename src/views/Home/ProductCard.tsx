@@ -16,7 +16,11 @@ function ProductCard({ product, onBuy }: ProductCardProps) {
   };
 
   return (
-    <div className="mt-6 mb-4 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm">
+    <div
+      // eslint-disable-next-line jsx-a11y/aria-role
+      role="card"
+      className="mt-6 mb-4 mx-2 rounded overflow-hidden shadow-2xl max-w-xs flex flex-col justify-between grow sm:max-w-sm"
+    >
       <div>
         <img className="w-full object-cover" src={product.image} alt={product.title} />
         <div className="px-6 py-4">

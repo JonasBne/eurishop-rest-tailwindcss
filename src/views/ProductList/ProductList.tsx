@@ -38,7 +38,6 @@ function ProductList() {
 
   const sortedProducts = sortBy(products ?? [], sortExpression);
 
-  // TODO: visibility based on breakpoints
   const columns: Column[] = [
     {
       name: 'id',
