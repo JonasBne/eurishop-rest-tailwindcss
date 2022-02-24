@@ -1,16 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router';
-import styled from 'styled-components';
-import Header from '../Header';
-import Button from '../Button';
-import FlexBox from '../FlexBox';
 import Backdrop from './Backdrop';
 import Overlay from './Overlay';
-
-const Span = styled.span`
-  text-align: center;
-`;
+import Button from '../Button';
 
 interface ErrorModalProps {
   name: string;
@@ -25,16 +18,16 @@ function ErrorModal({ name, message }: ErrorModalProps) {
       {ReactDOM.createPortal(<Backdrop />, document.body)}
       {ReactDOM.createPortal(
         <Overlay>
-          <FlexBox flexDirection="column" role="alert">
-            <Header as="h4">{name}</Header>
-            <Span>
+          <div className="flex flex-col" role="alert">
+            <h4>{name}</h4>
+            <span className="text-center">
               The following problem occured:
               {message}
-            </Span>
+            </span>
             <Button variant="danger" className="py-2 px-4" onClick={() => navigate('/home')}>
               Return home
             </Button>
-          </FlexBox>
+          </div>
         </Overlay>,
         document.body,
       )}
