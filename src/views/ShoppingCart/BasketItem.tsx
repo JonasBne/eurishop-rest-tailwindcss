@@ -47,7 +47,10 @@ function BasketItem({ item, onUpdate }: BasketItemProps) {
             className="w-3 h-3 block hover:cursor-pointer"
             onClick={() => handleUpdate('decrement')}
           />
-          <div className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-xs py-1 px-3 mx-3">
+          <div
+            data-testid="quantity"
+            className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-xs py-1 px-3 mx-3"
+          >
             {item.quantity}
           </div>
           <FontAwesomeIcon
