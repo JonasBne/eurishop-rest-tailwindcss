@@ -1,6 +1,7 @@
+import React from 'react';
+/* eslint-disable react/require-default-props */
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import { useGetBasket } from '../../api/basketApi';
 
 interface ShoppingBagIconProps {

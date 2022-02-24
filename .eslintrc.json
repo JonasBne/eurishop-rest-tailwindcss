@@ -15,7 +15,6 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "react/require-default-props": "off"
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }
 }
