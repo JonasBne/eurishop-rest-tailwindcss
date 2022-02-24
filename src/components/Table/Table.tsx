@@ -61,7 +61,7 @@ function Table({
         <tbody role="tablebody">
           {data.map((item, index) => (
             <tr key={`row${item.id}`}>
-              {Object.keys(data[index]).map((key: any, keyIndex) => (
+              {Object.keys(data[index]).map((key: PropertyKey, keyIndex) => (
                 <td
                   role="cell"
                   className="p-4 hover:cursor-pointer"
@@ -72,12 +72,8 @@ function Table({
                     }
                   }}
                 >
-                  {columns.map((col) => {
-                    if (col.name === key && col.render) {
-                      return col.render(item);
-                    }
-                  })}
-                  {item[key]}
+                  {/* // TODO: fix issue with type */}
+                  {columns[keyIndex].render ? columns[keyIndex].render(item) : item[key]}
                 </td>
               ))}
               <td role="cell" className="text-center">
