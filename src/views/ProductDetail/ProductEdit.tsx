@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useGetProduct, ProductDTO, useMutationProductPut } from '../../api/productsApi';

@@ -13,13 +13,6 @@ import ShoppingCart from './views/ShoppingCart/ShoppingCart';
 const queryClient = new QueryClient();
 
 function App() {
-  // TODO: option 0 navbar always shows cart icon
-  // TODO: option 1 navigate to other route (different view), no toggle but redirect
-  // TODO: option 2 show cart as modal (belongs to navbar)
-  // TODO: option 3 different navbar layout per view (instead of rendering in App)
-  // TODO: check the number of queries that are performed (both Home and ShoppingBag perform the same call)
-  // TODO: run and fix tests
-
   return (
     <QueryClientProvider client={queryClient}>
       <Navbar />
