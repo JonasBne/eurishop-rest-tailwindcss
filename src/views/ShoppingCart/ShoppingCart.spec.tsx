@@ -5,8 +5,10 @@ import Product from '../../domain/product';
 import { CartItem, calculateTotalCartCost } from '../../domain/shoppingCart';
 import { render, screen, waitFor, within } from '../../tests/utils';
 import { server } from '../../mockServer';
-import { getBasket, removeItemFromBasket } from '../../tests/fixtures/basket';
+import { getBasket, patchBasket, removeItemFromBasket } from '../../tests/fixtures/basket';
 import { getAllProducts, getSingleProduct } from '../../tests/fixtures/product';
+
+// TODO: issue with tests?
 
 describe('shopping cart', () => {
   // test('renders a total cost', () => {
@@ -52,16 +54,16 @@ describe('shopping cart', () => {
     server.use(getBasket);
     server.use(getSingleProduct);
     server.use(removeItemFromBasket);
+    server.use(patchBasket);
 
     render(<ShoppingCart />);
 
     const items = await screen.findAllByRole('cart-item');
 
-    const button = await within(items[0]).findByTestId('minus-svg');
+    const buttonCartItem1 = await within(items[0]).findByTestId('plus-svg');
 
-    userEvent.click(button);
+    userEvent.click(buttonCartItem1);
 
-    screen.debug(items);
     // await waitFor(() => expect(items[0]).not.toBeInTheDocument());
   });
 

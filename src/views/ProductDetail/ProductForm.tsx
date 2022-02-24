@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import Label from '../../components/Label';
 import Button from '../../components/Button';
 import Product from '../../domain/product';
+import noop from '../../utils/noop';
 
 interface ProductFormProps {
   title: string;
@@ -24,8 +25,6 @@ export interface ProductFormValues {
   basePrice: string;
   price: string;
 }
-
-const noop: any = () => {};
 
 function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }: ProductFormProps) {
   const { register, handleSubmit } = useForm<ProductFormValues>({
