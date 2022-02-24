@@ -50,10 +50,10 @@ function ProductForm({ initialProduct, onCancel = noop, onSubmit = noop, title }
 
   return (
     <form
-      className="max-w-sx rounded-md border-1 border-gray-300 overflow-hidden mt-4 mx-3 md:max-w-2xl md:mx-auto md:mt-8 md:text-xl "
+      className="max-w-sx rounded-md border-2 border-gray-400 overflow-hidden p-2 mt-4 mx-3 md:max-w-2xl md:mx-auto md:mt-8 md:text-xl "
       onSubmit={handleSubmit(handleFormResult)}
     >
-      <h2 className="font-mono bg-blue-800 text-white text-center py-3 text-sm md:text-xl">{title}</h2>
+      <h2 className=" bg-blue-800 text-white text-center py-3 text-sm md:text-xl">{title}</h2>
       <div>
         <Label label="Serial number" htmlFor="sku">
           <Input id="sku" name="sku" type="text" register={register('sku')} />
