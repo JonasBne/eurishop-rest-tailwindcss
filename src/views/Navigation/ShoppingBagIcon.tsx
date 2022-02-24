@@ -20,7 +20,7 @@ function ShoppingBagIcon({ className, onBagClick }: ShoppingBagIconProps) {
     <div className={className}>
       <FontAwesomeIcon
         icon={faShoppingBag}
-        className="block text-gray-200 focus:text-white outline-none hover:text-white mx-4"
+        className="block text-gray-200 focus:text-white outline-none hover:cursor-pointer hover:text-white mx-4"
         onClick={handleBasketClick}
       />
       <span className="absolute right-12 top-2 rounded-full bg-blue-600 w-4 h-4 text-white font-mono text-xs text-center">
